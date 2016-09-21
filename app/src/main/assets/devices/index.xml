@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+
+    <manufacturer
+        name="魅族"
+        file="meizu.xml"
+        key="Meizu" />
+
+    <manufacturer
+        name="小米"
+        file="xiaomi.xml"
+        key="Xiaomi" />
+
+</data>

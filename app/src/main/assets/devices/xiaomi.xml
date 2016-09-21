@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data quirks="noyv12" >
+
+    <model
+        name="@"
+        key="MI-ONE Plus" />
+
+    <model
+        name="@"
+        key="MI-ONE C1" />
+
+    <model
+        name="@2"
+        key="MI 2" />
+
+</data>

@@ -1,0 +1,167 @@
+------------------------------
+ ijkplayer
+------------------------------
+  https://github.com/Bilibili/ijkplayer
+
+  Copyright (C) 2013-2015 Zhang Rui <bbcallen@gmail.com>
+
+  Licensed under LGPLv2.1 or later
+
+------------------------------
+ libyuv
+------------------------------
+  https://code.google.com/p/libyuv
+  https://github.com/Bilibili/libyuv (fork)
+
+  Copyright (C) 2011 LibYuv Project Authors
+
+  libyuv is Licensed under a BSD Style License;
+  libyuv/source/x86inc.asm is Licensed under ISC license;
+
+------------------------------
+ Android Open Source Project
+------------------------------
+  see source code for referenced code and text resources
+
+  Copyright 2009-2012 The Android Open Source Project
+
+  Android is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+
+------------------------------
+ Apache Commons IO 2.2
+ Apache Commons Lang 3.1
+------------------------------
+  libs/commons-io-2.2.jar
+  libs/commons-lang3-3.1.jar
+
+  http://commons.apache.org/collections/
+  http://commons.apache.org/io/
+  http://commons.apache.org/lang/
+
+  Copyright 2001-2012 The Apache Software Foundation
+
+  Apache Commons projects is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+
+------------------------------
+ Citrus Project
+------------------------------
+  jni/wchar/*.*
+
+  http://citrus.bsdclub.org
+
+  Copyright see source code
+
+  The license is still ambiguous at this point, but it will be either a BSD Style License or use perl's model. In addition, "the license must allow for BSD/MIT/(L)GPL uses of the code". 
+
+------------------------------
+ 烈焰弹幕使[Danmaku Flame Master]
+------------------------------
+  master.flame.danmaku
+
+  https://github.com/Bilibili/DanmakuFlameMaster
+
+  Copyright (C) 2013-2015 Chen Hui <calmer91@gmail.com>
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+
+------------------------------
+ otto 1.3.6
+------------------------------
+  com.squareup.otto
+
+  https://github.com/square/otto
+
+  Copyright 2012 Square, Inc.
+  Copyright 2010 Google, Inc.
+
+  otto is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ Fresco 0.5.3+
+------------------------------
+  com.facebook.fresco
+  https://github.com/facebook/fresco
+
+  Copyright (c) 2015-present, Facebook, Inc.
+  Fresco is Licensed under BSD License
+
+------------------------------
+  Butter Knife 6.1.0
+------------------------------
+  libs/butterknife-6.1.0.jar
+  https://github.com/JakeWharton/butterknife
+
+  Copyright 2013 Jake Wharton.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ PagerSlidingTabStrip 1.0+
+------------------------------
+  com.astuetz.viewpager.extensions
+
+  https://github.com/astuetz/PagerSlidingTabStrip
+  
+  my fork:
+  https://github.com/bbcallen/PagerSlidingTabStrip
+
+  Copyright 2013 Andreas Stuetz
+
+  PagerSlidingTabStrip is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ android-flowlayout 1.9
+------------------------------
+  tv.danmaku.bili.widget.FlowLayout
+
+  https://github.com/ApmeM/android-flowlayout
+
+  Copyright 2011, Artem Votincev (apmem.org)
+
+  Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ Android View Animations 1.1.3
+------------------------------
+  tv.danmaku.bili.utils.animation
+
+  https://github.com/daimajia/AndroidViewAnimations
+
+  Copyright (c) 2014 daimajia
+
+  Licensed under the MIT License (MIT).
+
+------------------------------
+ fastjson 1.1.45.android
+------------------------------
+  libs/fastjson-1.1.45.android.jar
+
+  https://github.com/alibaba/fastjson
+
+  Copyright 1999-2101 Alibaba Group.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ zxing ?.?.?
+------------------------------
+  com.google.zxing
+
+  https://github.com/zxing/zxing
+
+  Copyright (C) 2011 ZXing authors
+
+  zxing is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0
+
+------------------------------
+ android-job 1.0.7
+------------------------------
+  com.evernote.android.job
+
+  https://github.com/evernote/android-job
+
+  Copyright (c) 2007-2015 by Evernote Corporation.
+
+  android-job is Licensed under the Apache License, Version 2.0 (the "License"); http://www.apache.org/licenses/LICENSE-2.0

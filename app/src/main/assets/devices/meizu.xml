@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data quirks="nov2hw" >
+
+    <!-- 魅族使用YV12会在底部有绿条 -->
+
+    <model
+        name="@ MX 双核"
+        key="M030" />
+
+    <model
+        name="@ MX 新双核"
+        key="M031" />
+
+    <model
+        name="@ MX 四核"
+        key="M032" />
+
+    <model
+        name="@ MX2"
+        key="M040" />
+
+</data>
