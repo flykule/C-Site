@@ -1,5 +1,7 @@
 package com.example.castle.csite.util;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.util.Property;
 
 import com.google.gson.JsonDeserializationContext;
@@ -70,7 +72,8 @@ public  class CommonBeanConverter<T> implements JsonSerializer<T>,
      * @param entry json条目
      * @param property 属性
      */
-    private void setUpProperty(T t, Map.Entry<String, JsonElement> entry, Property property,JsonDeserializationContext context) {
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    private void setUpProperty(T t, Map.Entry<String, JsonElement> entry, Property property, JsonDeserializationContext context) {
         if (property.getName().equals(entry.getKey())) {
             //是基本类型，在这里处理逻辑
             JsonElement element = entry.getValue();
@@ -94,6 +97,7 @@ public  class CommonBeanConverter<T> implements JsonSerializer<T>,
      * @param property 属性
      * @param element 元素
      */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void setPropertyPrimitive(T t, Property property, JsonElement element) {
         if (property.getType().getSimpleName().equals("String")) {
             property.set(t, element.getAsString());
@@ -110,6 +114,7 @@ public  class CommonBeanConverter<T> implements JsonSerializer<T>,
      * @param property 属性
      * @param element 元素
      */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void setPropertyNum(T t, Property property, JsonElement element) {
         String numType = property.getType().getSimpleName();
         switch (numType) {
