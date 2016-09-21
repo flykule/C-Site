@@ -1,1 +1,0 @@
-{"kira":"(ゝω·)☆","ji":"盯—","450":"放肆","cheers":"干杯","shocking":"惊吓","happy":"开心","sad":"难过","spitting":"喷","thinking":"认真","angry":"生气","mygod":"天了噜","huaji":"我就这表情","xuejie":"我选择死亡","pill":"张嘴吃药","zhuangb":"装完b就跑","doge":"doge"}
