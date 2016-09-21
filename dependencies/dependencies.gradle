@@ -1,0 +1,91 @@
+allprojects {
+  repositories {
+    jcenter {
+      url "http://jcenter.bintray.com/"
+    }
+  }
+}
+
+ext {
+
+  versions = [
+
+          buildTools               : "24.0.1",
+          minSdk                   : 15,
+          targetSdk                : 24,
+          compileSdk               : 24,
+          androidApplicationId     : "com.example.castle.jdmall",
+          versionCode              : 1,
+          versionName              : "1.0",
+          testApplicationId        : "com.example.castle.jdmall.test",
+          testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner",
+
+          support                  : "24.2.0",
+          dagger                   : "2.6.1",
+          butterKnife              : "8.4.0",
+          javaxAnnotation          : "10.0-b28",
+          rxJava                   : "1.1.10",
+          rxAndroid                : "1.2.1",
+          rxPermissions            : "0.7.0@aar",
+          gson                     : "2.7",
+          retrofit                 : "2.1.0",
+          okHttp                   : "3.4.1",
+          glide                    : "3.7.0",
+          constraintLayout         : "1.0.0-alpha1",
+          firebase                 : "9.0.1",
+          bus                      : "3.0.0",
+          robolectric              : "3.1-rc1",
+          junit                    : "4.12",
+          assertj                  : "1.7.1",
+          mockito                  : "1.9.5",
+          dexmaker                 : "1.0",
+          espresso                 : "2.0",
+          rxloader                 : "0.1.0",
+          logger                   : "1.15"
+
+  ]
+
+  //Android
+  androidBuildToolsVersion = "$versions.buildTools"
+  androidMinSdkVersion = 15
+  androidTargetSdkVersion = 24
+  androidCompileSdkVersion = 24
+
+  appDependencies = [
+
+
+          //Support
+          androidSupport    : "com.android.support:appcompat-v7:$versions.support",
+          androidSupportV4  : "com.android.support:support-v4:$versions.support",
+          //Injection
+          daggerCompiler    : "com.google.dagger:dagger-compiler:$versions.dagger",
+          dagger            : "com.google.dagger:dagger:$versions.dagger",
+          butterKnife       : "com.jakewharton:butterknife:$versions.butterKnife",
+          butterKnifeCompiler :"com.jakewharton:butterknife-compiler:$versions.butterKnife",
+          //SDK
+          recyclerView      : "com.android.support:recyclerview-v7:$versions.support",
+          cardView          : "com.android.support:cardview-v7:$versions.support",
+          androidAnnotations: "com.android.support:support-annotations:$versions.support",
+          design            : "com.android.support:design:$versions.support",
+          palette           : "com.android.support:palette-v7:$versions.support",
+          javaxAnnotation   : "org.glassfish:javax.annotation:$versions.javaxAnnotation",
+          rxJava            : "io.reactivex:rxjava:$versions.rxJava",
+          rxAndroid         : "io.reactivex:rxandroid:$versions.rxAndroid",
+          retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+          retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+          retrofitRxAdapter    : "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit",
+          okHttp               : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+          okhttpLogging        : "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+          gson                 : "com.google.code.gson:gson:$versions.gson",
+          glide                : "com.github.bumptech.glide:glide:$versions.glide",
+          rxloader             : "com.philosophicalhacker.rxloader:rxloader:$versions.rxloader",
+          logger               : "com.orhanobut:logger:$versions.logger",
+
+  ]
+
+  appTestDependencies = [
+
+          junit: "junit:junit:$versions.junit",
+
+  ]
+}
