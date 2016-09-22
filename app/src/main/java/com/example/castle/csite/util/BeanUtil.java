@@ -1,5 +1,7 @@
 package com.example.castle.csite.util;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.util.Property;
 
 import java.lang.reflect.Field;
@@ -24,6 +26,7 @@ public class BeanUtil<Type> {
     /**
      * 初始化属性List
      */
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void initPropertyList(){
         for (Field field : mFields) {
             field.setAccessible(true);
