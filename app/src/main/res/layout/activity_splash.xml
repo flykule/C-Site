@@ -7,13 +7,13 @@
         android:id="@+id/iv_hid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:src="@drawable/recharge_ic_success"
+        android:layout_weight="3"
+        android:src="@drawable/ic_splash_default"
     />
     <ImageView
-        android:layout_below="@id/iv_hid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bibi"
+        android:layout_height="80dp"
+        android:layout_below="@id/iv_hid"
+        android:src="@drawable/ic_splash_copy"
     />
 </LinearLayout>
