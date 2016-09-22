@@ -34,12 +34,13 @@
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
     >
-        <Button android:layout_width="wrap_content"
+        <Button 
+            android:id="@+id/btn_fu"
+            android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="#fbfafa"
                 android:text="釜山行"
-                android:onClick="clickff"
 
         />
         <Button android:layout_width="wrap_content"

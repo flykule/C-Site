@@ -3,7 +3,6 @@ package com.example.castle.csite.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,13 +85,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    /**
-     * 点击事件
-     * @param view
-     */
-    public void clickff(View view) {
-        Log.i("520it","点击了");
-    }
+  
 }
 
 

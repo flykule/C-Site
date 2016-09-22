@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.base.BaseActivity;
+import com.example.castle.csite.ui.fragment.FindFragment;
 import com.example.castle.csite.util.DoubleClickExit;
 import com.example.castle.csite.util.SysUtil;
 import com.example.castle.csite.util.ToastUtil;
@@ -101,6 +102,12 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
                     return true;
                 }
                 switch (item.getItemId()) {
+                    case R.id.drawer_menu_setting:
+                        pushFragment(new SettingFragment());
+                        break;
+                    case R.id.drawer_menu_app:
+                        pushFragment(new FindFragment());
+                        break;
                     /*case R.id.drawer_menu_about:
                         break;
                     case R.id.drawer_menu_browser:
@@ -226,8 +233,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
     public void onBackStackChanged() {
         mDrawerToggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount() == 0);
     }
-
-
 
 
 }
