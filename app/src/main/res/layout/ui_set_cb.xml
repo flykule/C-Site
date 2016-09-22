@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_set"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+>
+
+    <TextView
+        android:id="@+id/tv_set_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10dp"
+        android:text="关闭自动更新"
+        android:textColor="#000000"
+        android:textSize="18sp"
+    />
+
+    <CheckBox
+        android:id="@+id/cb_set_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:paddingLeft="10dp"
+    />
+
+
+</RelativeLayout>

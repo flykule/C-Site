@@ -11,8 +11,6 @@ import java.util.HashMap;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by castle on 16-8-19.
@@ -59,11 +57,12 @@ public class MyApplication extends Application{
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .addInterceptor(new HttpLoggingInterceptor())
                 .build();
-        Retrofit retrofit = new Retrofit.Builder()
+       /* Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
+                .baseUrl("")
                 .build();
-        mService = retrofit.create(ApiService.class);
+        mService = retrofit.create(ApiService.class);*/
     }
 
     public HashMap<String, String> getProtocolCacheMap() {

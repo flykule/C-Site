@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:gaga="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="播放"
+                  android:textColor="#f30aa6"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="清晰度选择"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="自动选择:根据机型智能适配"
+                  android:textColor="#484040"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="播放完成后动作"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="自动换P:自动播放下一P视频"
+                  android:textColor="#484040"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="高级"
+                  android:textColor="#f30aa6"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="解码设置"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="弹幕设置"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="离线设置"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="其它"
+                  android:textColor="#f30aa6"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="音乐通知栏"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="自动选择:根据系统版本智能适配"
+                  android:textColor="#484040"
+        />
+        <com.example.castle.csite.view.SetCheckBox
+            android:id="@+id/play_over"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            gaga:bigtitle="直接横屏播放"
+        />
+        <com.example.castle.csite.view.SetCheckBox
+            android:id="@+id/qp_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            gaga:bigtitle="全屏播放"
+        />
+        <com.example.castle.csite.view.SetCheckBox
+            android:id="@+id/off_Animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            gaga:bigtitle="禁用启动动画"
+        />
+        <com.example.castle.csite.view.SetCheckBox
+            android:id="@+id/no_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            gaga:bigtitle="不接收推送消息"
+        />
+        <com.example.castle.csite.view.SetCheckBox
+            android:id="@+id/vide_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            gaga:bigtitle="海外视频加速"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="清空图片缓存"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="清空搜索记录"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="恢复初始设置"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="反馈"
+                  android:textColor="#000"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginTop="10dp"
+                  android:text="帮助"
+                  android:textColor="#000"
+        />
+
+    </LinearLayout>
+</ScrollView>
