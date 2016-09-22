@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.base.BaseActivity;
+import com.example.castle.csite.ui.fragment.FindFragment;
 import com.example.castle.csite.view.BindLayout;
 
 /**
@@ -26,4 +27,11 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
+
+    public void clickinter(View v) {
+        Intent intent = new Intent(this, FindFragment.class);
+        startActivity(intent);
+    }
+
+
 }
