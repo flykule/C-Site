@@ -16,7 +16,7 @@
                   android:drawableLeft="@drawable/ic_hint_search"
                   android:gravity="center_vertical"
                   android:hint="搜索视频、番剧、UP主或av号"
-
+                  android:clickable="false"
         />
 
     </LinearLayout>
@@ -39,6 +39,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="#fbfafa"
                 android:text="釜山行"
+                android:onClick="clickff"
 
         />
         <Button android:layout_width="wrap_content"
@@ -120,7 +121,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                       
+                        android:clickable="true"
+
         >
             <ImageView
                 android:id="@+id/iv_tv"
@@ -142,9 +144,9 @@
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_alignParentRight="true"
+                       android:layout_centerInParent="true"
                        android:layout_marginRight="10dp"
                        android:src="@drawable/ic_discovery_new_1"
-                       android:layout_centerInParent="true"
             />
 
         </RelativeLayout>
