@@ -1,5 +1,30 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <integer name="grid_group_column_width">300</integer>
+    <integer name="grid_comic_column_width">200</integer>
+
+    <dimen name="grid_padding">5dp</dimen>
+    <dimen name="grid_margin">10dp</dimen>
+
+    <dimen name="header_padding_horizontal">20dp</dimen>
+    <dimen name="header_padding_vertical">10dp</dimen>
+
+    <dimen name="navigation_horizontal_padding">16dp</dimen>
+    <dimen name="navigation_item_height">48dp</dimen>
+    <dimen name="navigation_height">240dp</dimen>
+    <dimen name="navigation_title_size">14sp</dimen>
+    <dimen name="navigation_title_left_margin">24dp</dimen>
+    <dimen name="navigation_icon_size">24dp</dimen>
+
+    <dimen name="button_horizontal_padding">8dp</dimen>
+    <dimen name="button_horizontal_margin">4dp</dimen>
+
+    <dimen name="dialog_directory_row_height">48dp</dimen>
+    <dimen name="dialog_title">24sp</dimen>
+    <dimen name="dialog_subtitle">14sp</dimen>
+
+    <dimen name="card_text">18sp</dimen>
+    <dimen name="card_subtext">14sp</dimen>
+    <dimen name="card_padding">8dp</dimen>
+
+    <dimen name="toolbar_inset">72dp</dimen>
 </resources>
