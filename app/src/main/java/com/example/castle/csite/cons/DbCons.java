@@ -9,7 +9,7 @@ import android.provider.BaseColumns;
  */
 public class DbCons implements BaseColumns {
 
-	public static final String DB_NAME="jd.db";
+	public static final String DB_NAME="csite.db";
 
 	public static final int DB_VERSION=1;
 

@@ -5,8 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.a520it.jd.bean.UserAndPwd;
-import com.a520it.jd.cons.DbCons;
+import com.example.castle.csite.bean.UserAndPwd;
+import com.example.castle.csite.cons.DbCons;
+
 
 /**
  * @author 吴志强

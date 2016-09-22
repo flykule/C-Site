@@ -2,7 +2,8 @@ package com.example.castle.csite.contrller;
 
 import android.content.Context;
 
-import com.a520it.jd.listener.IModelChangeListener;
+import com.example.castle.csite.listener.IModelChangeListener;
+
 
 /**
  * @author 吴志强

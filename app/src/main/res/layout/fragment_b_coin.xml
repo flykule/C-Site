@@ -49,7 +49,7 @@
         <ImageView
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_gray_coin"
+            android:src="@drawable/ic_bp_coin"
             android:layout_width="70dp"
             android:layout_height="70dp"/>
 
@@ -64,7 +64,7 @@
             android:id="@+id/remain_tv"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="硬币余额"
+            android:text="B币余额"
             android:textColor="#c2baba"
             android:textSize="20sp"/>
         <TextView

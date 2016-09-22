@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
+import com.example.castle.csite.contrller.BaseController;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.util.DoubleClickExit;
 import com.example.castle.csite.util.MyApplication;
@@ -16,8 +19,15 @@ import java.lang.annotation.Annotation;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected BaseController mController;
 
+    protected void tip(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
 
+    public void goBack(View v){
+        finish();
+    }
     /**
      * 复写onCreate,必须加注解标记使用的layout
      *
@@ -26,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         Class cls = getClass();
         if (!cls.isAnnotationPresent(BindLayout.class)) return;
         Annotation annotation = cls.getAnnotation(BindLayout.class);

@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.a520it.jd.cons.DbCons;
+import com.example.castle.csite.cons.DbCons;
+
 
 /**
  * @author 吴志强
