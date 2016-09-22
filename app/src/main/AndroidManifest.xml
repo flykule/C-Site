@@ -5,17 +5,19 @@
     <application
         android:name=".util.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_live_player_audience"
+        android:icon="@drawable/default_share_image"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.SettingActivity"/>
+        <activity android:name=".ui.activity.MainActivity"/>
     </application>
 
 </manifest>
