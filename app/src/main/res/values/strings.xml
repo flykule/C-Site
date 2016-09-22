@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CSite</string>
+    <string name="drawer_open">开启抽屉</string>
+    <string name="drawer_close">关闭抽屉</string>
 </resources>

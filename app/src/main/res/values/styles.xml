@@ -6,6 +6,16 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">@color/ripple_material_light</item>
+
+        <item name="android:textColor">@color/darkest</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="MyToolbarTheme" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/lightest</item>
+        <item name="android:colorControlNormal">@color/lightest</item>
+    </style>
+
 
 </resources>
