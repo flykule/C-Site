@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.base.BaseActivity;
 import com.example.castle.csite.ui.fragment.FindFragment;
+import com.example.castle.csite.ui.fragment.SettingFragment;
 import com.example.castle.csite.util.DoubleClickExit;
 import com.example.castle.csite.util.SysUtil;
 import com.example.castle.csite.util.ToastUtil;
@@ -107,6 +108,13 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
                         break;
                     case R.id.drawer_menu_app:
                         pushFragment(new FindFragment());
+                        break;
+                    //我的收藏
+                    case R.id.drawer_menu_collection:
+                        gotoTarget(MyCollectActivity.class);
+                        //离线缓存
+                        case R.id.drawer_menu_cache:
+                            gotoTarget(OffLineCacheActivity.class);
                         break;
                     /*case R.id.drawer_menu_about:
                         break;

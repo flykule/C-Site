@@ -2,4 +2,8 @@
     <string name="app_name">CSite</string>
     <string name="drawer_open">开启抽屉</string>
     <string name="drawer_close">关闭抽屉</string>
+    <string name="frag_video">视频收藏</string>
+    <string name="frag_subject">主题收藏</string>
+    <string name="frag_custom">自定义收藏</string>
+
 </resources>

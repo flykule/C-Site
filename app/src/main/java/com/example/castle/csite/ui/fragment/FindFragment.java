@@ -65,7 +65,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.interest:
-                ActivityUtil.start(getActivity(), InterestActivity.class);
+                ActivityUtil.startWithoutFinish(getActivity(), InterestActivity.class);
                 break;
             case R.id.huati:
                 ToastUtil.showLong("话题被点击了");

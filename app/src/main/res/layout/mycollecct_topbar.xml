@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.castle.csite.view.MyCollectTopBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/colorAccent"
+    android:orientation="horizontal"  >
+        <LinearLayout
+            android:id="@+id/frag_video_ll"
+            style="@style/top_ll_style"
+
+            >
+                <TextView
+                    android:id="@+id/frag_video"
+                    style="@style/top_text_style"
+                    android:text="@string/frag_video" />
+                <View
+                    android:id="@+id/video_view"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:background="#f6f5f5" />-
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/frag_subject_ll"
+            style="@style/top_ll_style"
+
+            >
+                <TextView
+                    android:id="@+id/frag_subject"
+                    style="@style/top_text_style"
+                    android:text="@string/frag_subject" />
+                <View
+                    android:id="@+id/subject_view"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:background="#f6f5f5"
+                    android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/frag_custom_ll"
+            style="@style/top_ll_style"
+
+        >
+                <TextView
+                    android:id="@+id/frag_custom"
+                    style="@style/top_text_style"
+                    android:text="@string/frag_custom" />
+                <View
+                    android:id="@+id/custom_view"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:background="#f6f5f5"
+                    android:visibility="invisible"/>
+        </LinearLayout>
+</com.example.castle.csite.view.MyCollectTopBar>
