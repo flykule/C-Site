@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -61,6 +62,22 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         mContentFrame = (FrameLayout) findViewById(R.id.content_frame);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        initUi();
+
+        if (savedInstanceState == null) {
+            setFragment(new HomeFragment());
+            /*setNavBar();
+            mCurrentNavItem = R.id.drawer_menu_library;*/
+        } else {
+            //强制更新指示
+            onBackStackChanged();
+            mCurrentNavItem = savedInstanceState.getInt(STATE_CURRENT_MENU_ITEM);
+        }
+        //mNavigationView.getMenu().findItem(mCurrentNavItem).setChecked(true);
+    }
+
+    private void initUi() {
+        disableNavigationViewScrollbars(mNavigationView);
         mToolbar.setTitleTextColor(Color.WHITE);
         //初始化toolbar,设置相应属性
         setSupportActionBar(mToolbar);
@@ -81,18 +98,17 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
                 this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close
         );
         mDrawerLayout.addDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            setFragment(new HomeFragment());
-            /*setNavBar();
-            mCurrentNavItem = R.id.drawer_menu_library;*/
-        } else {
-            //强制更新指示
-            onBackStackChanged();
-            mCurrentNavItem = savedInstanceState.getInt(STATE_CURRENT_MENU_ITEM);
-        }
-        //mNavigationView.getMenu().findItem(mCurrentNavItem).setChecked(true);
     }
+
+    private void disableNavigationViewScrollbars(NavigationView navigationView) {
+        if (navigationView != null) {
+            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(0);
+            if (navigationMenuView != null) {
+                navigationMenuView.setVerticalScrollBarEnabled(false);
+            }
+        }
+    }
+
 
 
     private void setUpSlideMenu() {
