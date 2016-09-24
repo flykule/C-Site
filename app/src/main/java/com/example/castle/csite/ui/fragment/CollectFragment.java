@@ -28,7 +28,7 @@ public class CollectFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_mycollect, container, false);
+        View view = inflater.inflate(R.layout.fragment_mycollect, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mViewPager.setAdapter(new MyCollectAdapter(getFragmentManager()));
