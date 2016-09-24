@@ -19,6 +19,6 @@ public class EmptyFragment extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_b,container,false);
+		return inflater.inflate(R.layout.fragment_b_coin,container,false);
 	}
 }
