@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
+import com.example.castle.csite.bean.UserAndPwd;
 import com.example.castle.csite.network.api.ApiService;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ public class MyApplication extends Application{
     private static Context mContext;
     private static Handler mHandler;
     private static int mMainThread;
+    public UserAndPwd mUserInfo;
 
     private HashMap<String, String> mProtocolCacheMap = new HashMap<>();
 
