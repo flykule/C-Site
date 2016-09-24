@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.activity.InterestActivity;
 import com.example.castle.csite.util.ActivityUtil;
+import com.example.castle.csite.util.ToastUtil;
 
 /**
  * @author 灰太狼
@@ -67,22 +68,24 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 ActivityUtil.start(getActivity(), InterestActivity.class);
                 break;
             case R.id.huati:
-
+                ToastUtil.showLong("话题被点击了");
                 break;
             case R.id.huodong:
-
+                ToastUtil.showLong("话题被点击了");
                 break;
             case R.id.yuanquang:
-
+                ToastUtil.showLong("原创被点击了");
                 break;
             case R.id.paihang:
-
+                ToastUtil.showLong("排行被点击了");
                 break;
             case R.id.game:
-
+                ToastUtil.showLong("游戏被点击了");
                 break;
         }
     }
+
+  
 }
 
 
