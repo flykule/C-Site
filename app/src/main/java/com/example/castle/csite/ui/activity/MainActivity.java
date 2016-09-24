@@ -116,6 +116,12 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
                         case R.id.drawer_menu_cache:
                             gotoTarget(OffLineCacheActivity.class);
                         break;
+                        case R.id.drawer_menu_wallet:
+                            gotoTarget(MyWalletActivity.class);
+                        break;
+                        case R.id.drawer_menu_theme:
+                            gotoTarget(MyThemeActivity.class);
+                        break;
                     /*case R.id.drawer_menu_about:
                         break;
                     case R.id.drawer_menu_browser:

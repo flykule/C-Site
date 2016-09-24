@@ -20,7 +20,6 @@
         <activity android:name=".ui.activity.MainActivity"/>
         <activity android:name=".ui.activity.InterestActivity"/>
         <activity android:name=".ui.activity.OffLineCacheActivity"/>
-        <activity android:name=".ui.activity.TabActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.RegistActivity"/>
         <activity android:name=".ui.activity.MyThemeActivity"/>
