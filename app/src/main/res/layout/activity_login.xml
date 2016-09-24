@@ -12,10 +12,11 @@
         android:background="#df3960"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
+            android:layout_gravity="center_vertical"
             android:id="@+id/arrow_img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"/>
 
         <TextView
@@ -48,6 +49,8 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/visible_rl"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -71,6 +74,33 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="6dp"
                 android:src="@drawable/ic_33"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/invisible_rl"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="95dp"
+                android:layout_height="85dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="6dp"
+                android:src="@drawable/ic_22_hide"/>
+
+            <ImageView
+                android:layout_width="135dp"
+                android:layout_height="85dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_bangumi_recommend_followed_tips"/>
+
+            <ImageView
+                android:layout_width="95dp"
+                android:layout_height="85dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="6dp"
+                android:src="@drawable/ic_33_hide"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -126,16 +156,16 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/login_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:text="登录"/>
-        <Button
             android:id="@+id/register_btn"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginLeft="8dp"
             android:text="注册"/>
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="登录"/>
     </LinearLayout>
 
 </LinearLayout>

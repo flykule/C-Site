@@ -8,7 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -33,13 +34,15 @@ import java.lang.ref.WeakReference;
 @BindLayout(id= R.layout.activity_login)
 public class LoginActivity extends BaseActivity implements IModelChangeListener, View.OnClickListener {
 	private TextView mLoginTv;
-	private ImageButton mArrowImgBtn;
+	private ImageView mArrowIv;
 	private TextView mForgetPwdTv;
 	private EditText mUsernameEt;
 	private EditText mPwdEt;
 	private Button mLoginBtn;
 	private Button mRegisterBtn;
 	private LoginController mController;
+	private RelativeLayout mInvisiableRl;
+	private RelativeLayout mVisiableRl;
 
 	private MyHandler mMyHandler =new MyHandler(this);
 	private String mName;
@@ -120,11 +123,21 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 	}
 
 	private void initUI() {
-		mArrowImgBtn=(ImageButton)findViewById(R.id.arrow_img);
+		mInvisiableRl = (RelativeLayout)findViewById(R.id.invisible_rl);
+		mVisiableRl = (RelativeLayout)findViewById(R.id.visible_rl);
+
+		mArrowIv=(ImageView) findViewById(R.id.arrow_img);
 		mLoginTv= (TextView)findViewById(R.id.login_tv);
 		mForgetPwdTv = (TextView) findViewById(R.id.forget_pwd_tv);
 		mUsernameEt = (EditText) findViewById(R.id.username_et);
 		mPwdEt = (EditText) findViewById(R.id.pwd_et);
+		mPwdEt.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mInvisiableRl.setVisibility(View.VISIBLE);
+				mVisiableRl.setVisibility(View.INVISIBLE);
+			}
+		});
 		mLoginBtn = (Button) findViewById(R.id.login_btn);
 		mLoginBtn.setOnClickListener(this);
 		mRegisterBtn = (Button) findViewById(R.id.register_btn);
@@ -146,6 +159,7 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 				break;
 		}
 	}
+
 
 	public void loginClick(View view){
 		mName = mUsernameEt.getText().toString().trim();
