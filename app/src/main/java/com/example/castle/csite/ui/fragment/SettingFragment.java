@@ -1,4 +1,4 @@
-package com.example.castle.csite.ui.activity;
+package com.example.castle.csite.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
