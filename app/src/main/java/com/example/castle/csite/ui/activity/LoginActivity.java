@@ -44,6 +44,9 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 	private RelativeLayout mInvisiableRl;
 	private RelativeLayout mVisiableRl;
 
+	private ImageView mIc22iV;
+	private ImageView mIc33iV;
+
 	private MyHandler mMyHandler =new MyHandler(this);
 	private String mName;
 	private String mPwd;
@@ -123,10 +126,19 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 	}
 
 	private void initUI() {
+		mIc22iV = (ImageView)findViewById(R.id.ic22_iv);
+		mIc33iV = (ImageView)findViewById(R.id.ic33_iv);
+
 		mInvisiableRl = (RelativeLayout)findViewById(R.id.invisible_rl);
 		mVisiableRl = (RelativeLayout)findViewById(R.id.visible_rl);
 
 		mArrowIv=(ImageView) findViewById(R.id.arrow_img);
+		mArrowIv.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ActivityUtil.start(LoginActivity.this,MainActivity.class);
+			}
+		});
 		mLoginTv= (TextView)findViewById(R.id.login_tv);
 		mForgetPwdTv = (TextView) findViewById(R.id.forget_pwd_tv);
 		mUsernameEt = (EditText) findViewById(R.id.username_et);
@@ -134,8 +146,8 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 		mPwdEt.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mInvisiableRl.setVisibility(View.VISIBLE);
-				mVisiableRl.setVisibility(View.INVISIBLE);
+				mIc22iV.setBackgroundResource(R.drawable.ic_22_hide);
+				mIc33iV.setBackgroundResource(R.drawable.ic_33_hide);
 			}
 		});
 		mLoginBtn = (Button) findViewById(R.id.login_btn);

@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
@@ -25,6 +26,7 @@ import com.example.castle.csite.ui.fragment.FindFragment;
 import com.example.castle.csite.ui.fragment.HomeFragment;
 import com.example.castle.csite.ui.fragment.SettingFragment;
 import com.example.castle.csite.ui.fragment.WalletFragment;
+import com.example.castle.csite.util.ActivityUtil;
 import com.example.castle.csite.util.DoubleClickExit;
 import com.example.castle.csite.util.SysUtil;
 import com.example.castle.csite.util.ToastUtil;
@@ -61,7 +63,12 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mContentFrame = (FrameLayout) findViewById(R.id.content_frame);
 		mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-
+		mNavigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ActivityUtil.start(MainActivity.this,LoginActivity.class);
+			}
+		});
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitleTextColor(Color.WHITE);
 		//初始化toolbar,设置相应属性
