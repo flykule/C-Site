@@ -34,6 +34,7 @@ import com.example.castle.csite.view.BindLayout;
 
 /**
  * Created by castle on 16-9-21.
+ * 主活动，添加隐藏滑动条
  */
 @BindLayout(id = R.layout.activity_main)
 public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
