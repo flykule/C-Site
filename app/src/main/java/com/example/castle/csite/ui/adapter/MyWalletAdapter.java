@@ -5,9 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.castle.csite.R;
-import com.example.castle.csite.ui.fragment.CustomCollectFragment;
-import com.example.castle.csite.ui.fragment.SubjectCollectFragment;
-import com.example.castle.csite.ui.fragment.VideoCollectFragment;
+import com.example.castle.csite.ui.fragment.B_CoinFragment;
+import com.example.castle.csite.ui.fragment.CoinFragment;
 import com.example.castle.csite.util.UiUtils;
 
 /**
@@ -18,18 +17,16 @@ public class MyWalletAdapter extends FragmentStatePagerAdapter {
     private String[] mTitles;
     public MyWalletAdapter(FragmentManager fm) {
         super(fm);
-        mTitles = UiUtils.getArray(R.array.MyCollect);
+        mTitles = UiUtils.getArray(R.array.MyWallet);
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new VideoCollectFragment();
+                return new B_CoinFragment();
             case 1:
-                return new SubjectCollectFragment();
-            case 2:
-                return new CustomCollectFragment();
+                return new CoinFragment();
 
         }
         return null;

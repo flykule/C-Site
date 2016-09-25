@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.castle.csite.R;
-import com.example.castle.csite.ui.adapter.MyCollectAdapter;
+import com.example.castle.csite.ui.adapter.MyWalletAdapter;
 
 
 /**
@@ -31,7 +31,7 @@ public class WalletFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_mycollect, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        mViewPager.setAdapter(new MyCollectAdapter(getFragmentManager()));
+        mViewPager.setAdapter(new MyWalletAdapter(getFragmentManager()));
         mTabLayout.setupWithViewPager(mViewPager);
         setHasOptionsMenu(true);
         return view;

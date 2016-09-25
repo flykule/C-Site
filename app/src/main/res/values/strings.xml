@@ -10,6 +10,10 @@
         <item>主题收藏</item>
         <item>自定义收藏</item>
     </string-array>
+    <string-array name="MyWallet">
+        <item>B币</item>
+        <item>硬币</item>
+    </string-array>
     <string-array name="Home">
         <item>直播</item>
         <item>推荐</item>
