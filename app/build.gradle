@@ -26,6 +26,8 @@ dependencies {
     compile app.androidSupportV4
     compile app.androidAnnotations
     compile app.recyclerView
+    compile app.rxJava
+    compile app.rxAndroid
     compile app.design
     provided app.javaxAnnotation
     compile app.okHttp

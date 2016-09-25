@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.fragment.FindFragment;
+import com.example.castle.csite.ui.fragment.RecommendFragment;
 import com.example.castle.csite.ui.fragment.SubareaFragment;
 import com.example.castle.csite.ui.fragment.VideoCollectFragment;
 import com.example.castle.csite.util.UiUtils;
@@ -25,6 +26,8 @@ public class HomeAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
+            case 1:
+                return new RecommendFragment();
             case 3:
                 return new SubareaFragment();
             case 5:
