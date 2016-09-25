@@ -34,7 +34,6 @@ import com.example.castle.csite.view.BindLayout;
 
 /**
  * Created by castle on 16-9-21.
- * 主活动，添加隐藏滑动条
  */
 @BindLayout(id = R.layout.activity_main)
 public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
@@ -64,7 +63,8 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mContentFrame = (FrameLayout) findViewById(R.id.content_frame);
 		mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-		mNavigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+        mNavigationView.getChildAt(0).setVerticalScrollBarEnabled(false);
+        mNavigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ActivityUtil.start(MainActivity.this,LoginActivity.class);
