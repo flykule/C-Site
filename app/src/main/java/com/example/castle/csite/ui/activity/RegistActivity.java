@@ -29,6 +29,7 @@ public class RegistActivity extends BaseActivity implements IModelChangeListener
 	private EditText mSurePwdEt;
 	private Button mConfirmBtn;
 
+
 	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
