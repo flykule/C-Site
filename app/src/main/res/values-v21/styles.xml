@@ -13,6 +13,8 @@
         </style>
 
         <style name="MyToolbarTheme" parent="Widget.AppCompat.ActionBar">
+                <item name="elevation">0dp</item>
+                <item name="android:background">@color/colorPrimary</item>
                 <item name="android:textColorPrimary">@color/lightest</item>
                 <item name="android:colorControlNormal">@color/lightest</item>
         </style>

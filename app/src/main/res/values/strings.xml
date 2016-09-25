@@ -2,8 +2,21 @@
     <string name="app_name">CSite</string>
     <string name="drawer_open">开启抽屉</string>
     <string name="drawer_close">关闭抽屉</string>
-    <string name="frag_video">视频收藏</string>
-    <string name="frag_subject">主题收藏</string>
-    <string name="frag_custom">自定义收藏</string>
+    <string name="toolbar_menu_download"/>
+    <string name="toolbar_menu_search"/>
+    <string name="menu_top_game_center">游戏中心</string>
+    <string-array name="MyCollect">
+        <item>视频收藏</item>
+        <item>主题收藏</item>
+        <item>自定义收藏</item>
+    </string-array>
+    <string-array name="Home">
+        <item>直播</item>
+        <item>推荐</item>
+        <item>番剧</item>
+        <item>分区</item>
+        <item>关注</item>
+        <item>发现</item>
+    </string-array>
 
 </resources>

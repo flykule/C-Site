@@ -12,12 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.castle.csite.R;
-import com.example.castle.csite.ui.adapter.HomeAdapter;
+import com.example.castle.csite.ui.adapter.MyCollectAdapter;
+
 
 /**
- * Created by castle on 16-9-21.
+ * Created by castle on 16-9-24.
+ * 我的收藏页面
  */
-public class HomeFragment extends Fragment{
+public class WalletFragment extends Fragment {
+
     TabLayout mTabLayout;
 
     ViewPager mViewPager;
@@ -28,7 +31,7 @@ public class HomeFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_mycollect, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        mViewPager.setAdapter(new HomeAdapter(getFragmentManager()));
+        mViewPager.setAdapter(new MyCollectAdapter(getFragmentManager()));
         mTabLayout.setupWithViewPager(mViewPager);
         setHasOptionsMenu(true);
         return view;
@@ -36,7 +39,7 @@ public class HomeFragment extends Fragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.main,menu);
+        inflater.inflate(R.menu.collect,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
