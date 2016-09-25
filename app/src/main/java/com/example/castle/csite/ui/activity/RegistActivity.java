@@ -58,7 +58,7 @@ public class RegistActivity extends BaseActivity implements IModelChangeListener
 		mArrowiV.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				goBack(v);
+				finish();
 			}
 		});
 		mNameEt = (EditText) findViewById(R.id.username_et);
