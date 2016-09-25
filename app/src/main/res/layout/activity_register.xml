@@ -12,7 +12,7 @@
         android:background="#df3960"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/arrow_img"
             android:layout_width="50dp"
             android:layout_height="50dp"

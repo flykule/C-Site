@@ -5,7 +5,7 @@
               android:background="#ede8e8"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+<!--
     <LinearLayout
         android:id="@+id/top_ll"
         android:layout_width="match_parent"
@@ -38,20 +38,20 @@
             android:textSize="26sp"/>
 
     </LinearLayout>
-
+-->
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/B_coin_ll"
         android:background="#fff"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="180dp">
 
         <ImageView
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_gray_coin"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
         <LinearLayout
             android:layout_marginLeft="10dp"
@@ -78,7 +78,7 @@
         <TextView
             android:id="@+id/pay_record_tv"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="交易记录"

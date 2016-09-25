@@ -55,6 +55,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/ic22_iv"
                 android:layout_width="95dp"
                 android:layout_height="85dp"
                 android:layout_alignParentBottom="true"
@@ -68,6 +69,7 @@
                 android:src="@drawable/ic_bangumi_recommend_followed_tips"/>
 
             <ImageView
+                android:id="@+id/ic33_iv"
                 android:layout_width="95dp"
                 android:layout_height="85dp"
                 android:layout_alignParentBottom="true"
@@ -77,7 +79,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/invisible_rl"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
