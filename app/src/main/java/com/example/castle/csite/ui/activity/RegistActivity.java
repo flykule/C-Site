@@ -15,6 +15,7 @@ import com.example.castle.csite.cons.IdiyMessage;
 import com.example.castle.csite.contrller.RegistController;
 import com.example.castle.csite.listener.IModelChangeListener;
 import com.example.castle.csite.ui.base.BaseActivity;
+import com.example.castle.csite.util.ActivityUtil;
 import com.example.castle.csite.view.BindLayout;
 
 /**
@@ -58,7 +59,7 @@ public class RegistActivity extends BaseActivity implements IModelChangeListener
 		mArrowiV.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				goBack(v);
+				ActivityUtil.start(RegistActivity.this,LoginActivity.class);
 			}
 		});
 		mNameEt = (EditText) findViewById(R.id.username_et);
