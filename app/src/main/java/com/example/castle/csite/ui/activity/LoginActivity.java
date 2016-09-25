@@ -29,7 +29,7 @@ import java.lang.ref.WeakReference;
 /**
  * @author 吴志强
  * @time 2016/9/21  21:18
- * @desc ${TODD}
+ * @desc $登录
  */
 @BindLayout(id= R.layout.activity_login)
 public class LoginActivity extends BaseActivity implements IModelChangeListener, View.OnClickListener {
