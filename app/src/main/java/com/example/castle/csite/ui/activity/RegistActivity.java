@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RResult;
@@ -28,7 +29,7 @@ public class RegistActivity extends BaseActivity implements IModelChangeListener
 	private EditText mPwdEt;
 	private EditText mSurePwdEt;
 	private Button mConfirmBtn;
-
+	private ImageView mArrowiV;
 
 	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -53,6 +54,13 @@ public class RegistActivity extends BaseActivity implements IModelChangeListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mArrowiV = (ImageView)findViewById(R.id.arrow_img);
+		mArrowiV.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				goBack(v);
+			}
+		});
 		mNameEt = (EditText) findViewById(R.id.username_et);
 		mPwdEt = (EditText) findViewById(R.id.pwd_et);
 		mSurePwdEt = (EditText) findViewById(R.id.surepwd_et);
