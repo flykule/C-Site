@@ -153,6 +153,7 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 		mLoginBtn = (Button) findViewById(R.id.login_btn);
 		mLoginBtn.setOnClickListener(this);
 		mRegisterBtn = (Button) findViewById(R.id.register_btn);
+		mRegisterBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -185,6 +186,6 @@ public class LoginActivity extends BaseActivity implements IModelChangeListener,
 	}
 
 	public void registClick(View view){
-		ActivityUtil.startWithoutFinish(this,RegistActivity.class);
+		ActivityUtil.start(this,RegistActivity.class);
 	}
 }
