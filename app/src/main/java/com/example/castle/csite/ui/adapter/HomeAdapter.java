@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.castle.csite.R;
+import com.example.castle.csite.ui.fragment.FindFragment;
+import com.example.castle.csite.ui.fragment.SubjectCollectFragment;
 import com.example.castle.csite.ui.fragment.VideoCollectFragment;
 import com.example.castle.csite.util.UiUtils;
 
@@ -14,6 +16,7 @@ import com.example.castle.csite.util.UiUtils;
  */
 public class HomeAdapter extends FragmentStatePagerAdapter {
     private String[] mTitles;
+
     public HomeAdapter(FragmentManager fm) {
         super(fm);
         mTitles = UiUtils.getArray(R.array.Home);
@@ -22,6 +25,11 @@ public class HomeAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
+            case 3:
+                return new SubjectCollectFragment();
+            case 5:
+                return new FindFragment();           
+                  
             default:
                 return new VideoCollectFragment();
 
