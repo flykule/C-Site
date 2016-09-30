@@ -22,6 +22,8 @@
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.RegistActivity"/>
         <activity android:name=".ui.activity.MyThemeActivity"/>
+        <activity
+            android:name=".ui.activity.WebActivity"/>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

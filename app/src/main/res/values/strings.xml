@@ -5,6 +5,9 @@
     <string name="toolbar_menu_download"/>
     <string name="toolbar_menu_search"/>
     <string name="menu_top_game_center">游戏中心</string>
+    <string name="share">分享</string>
+    <string name="open_in_browser">浏览器打开</string>
+    <string name="menu_copy">复制链接</string>
     <string-array name="MyCollect">
         <item>视频收藏</item>
         <item>主题收藏</item>

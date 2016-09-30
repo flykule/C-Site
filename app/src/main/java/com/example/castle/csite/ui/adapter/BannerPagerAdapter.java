@@ -1,11 +1,13 @@
 package com.example.castle.csite.ui.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendBanner;
+import com.example.castle.csite.ui.activity.WebActivity;
 import com.example.castle.csite.util.ImageLoader;
 import com.example.castle.csite.util.UiUtils;
 import com.example.castle.csite.view.BannerView;
@@ -31,10 +33,21 @@ public class BannerPagerAdapter implements BannerView.Adapter {
 
     @Override
     public View getView(int position) {
-        LayoutInflater inflater = LayoutInflater.from(UiUtils.getContext());
+        final LayoutInflater inflater = LayoutInflater.from(UiUtils.getContext());
         View view = inflater.inflate(R.layout.item_banner, null);
         ImageView bannerView = (ImageView) view.findViewById(R.id.iv_banner);
-        ImageLoader.load(UiUtils.getContext(),mBanners.get(position).getCover(),bannerView);
+        final RecommendBanner.Banner banner = mBanners.get(position);
+        bannerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UiUtils.getContext(), WebActivity.class);
+                intent.putExtra(WebActivity.WEB_URL, banner.getLink());
+                intent.putExtra(WebActivity.WEB_TITLE, banner.getTitle());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                UiUtils.getContext().startActivity(intent);
+            }
+        });
+        ImageLoader.load(UiUtils.getContext(),banner.getCover(),bannerView);
         return view;
     }
 

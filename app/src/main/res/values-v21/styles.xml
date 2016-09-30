@@ -8,7 +8,7 @@
                 <item name="colorAccent">@color/colorAccent</item>
                 <item name="android:colorControlHighlight">@color/ripple_material_light</item>
 
-                <item name="android:textColor">@color/darkest</item>
+                <item name="android:textColor">@color/lightest</item>
                 <item name="android:background">@android:color/transparent</item>
         </style>
 

@@ -41,7 +41,7 @@ public abstract class BaseFragment extends Fragment {
         if (!cls.isAnnotationPresent(BindLayout.class)) return null;
         Annotation annotation = cls.getAnnotation(BindLayout.class);
         BindLayout bindLayout = (BindLayout) annotation;
-        View view = inflater.inflate(bindLayout.id(), null);
+        View view = inflater.inflate(bindLayout.id(), container,false);
         ButterKnife.bind(this, view);
         return view;
     }
