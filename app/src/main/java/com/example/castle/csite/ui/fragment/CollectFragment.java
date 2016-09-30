@@ -6,8 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -33,15 +31,10 @@ public class CollectFragment extends Fragment {
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mViewPager.setAdapter(new MyCollectAdapter(getFragmentManager()));
         mTabLayout.setupWithViewPager(mViewPager);
-        setHasOptionsMenu(true);
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.collect,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+
 
     @Override
     public void onDestroyView() {

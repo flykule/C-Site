@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -227,7 +226,6 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == MSG) {
-                Log.e("Pos", "the position is " + currentPosition);
                 if (currentPosition == totalCount - 1) {
                     viewPager.setCurrentItem(showCount - 1, false);
                 } else {
