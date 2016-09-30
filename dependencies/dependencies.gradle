@@ -22,7 +22,7 @@ ext {
 
           support                  : "24.2.0",
           dagger                   : "2.6.1",
-          butterKnife              : "8.4.0",
+          butterKnife              : "7.0.1",
           javaxAnnotation          : "10.0-b28",
           rxJava                   : "1.1.10",
           rxAndroid                : "1.2.1",

@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.castle.csite.contrller.BaseController;
 import com.example.castle.csite.network.api.ApiService;
-import com.example.castle.csite.util.DoubleClickExit;
 import com.example.castle.csite.util.MyApplication;
 import com.example.castle.csite.view.BindLayout;
 
@@ -20,13 +19,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected BaseController mController;
 
-    protected void tip(String msg){
+    protected void tip(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void goBack(View v){
+    public void goBack(View v) {
         finish();
     }
+
     /**
      * 复写onCreate,必须加注解标记使用的layout
      *
@@ -52,11 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        if (!DoubleClickExit.check()) {
-            toastMsg("再次点击退出");
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
 
     /**
@@ -79,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 得到api服务
+     *
      * @return api服务类，用做网络请求
      */
     public ApiService getApiService() {
@@ -87,6 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 跳转到另外一个活动
+     *
      * @param target 目标活动
      */
     public void gotoTarget(Class target) {
@@ -96,6 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 跳转到另外一个活动并且结束当前活动
+     *
      * @param target 目标活动
      */
     public void gotoTargetAndFinish(Class target) {

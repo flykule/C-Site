@@ -51,12 +51,12 @@ dependencies {
     compile app.gson
     compile app.retrofitConverterGson
     compile app.retrofitRxAdapter
+    compile app.butterKnife
     testCompile appTest.junit
+    compile 'com.alibaba:fastjson:1.2.9'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile files('libs/butterknife-7.0.1.jar')
-    compile files('libs/fastjson-1.0.3.jar')
     compile files('libs/SocialSDK_QQZone_3.jar')
     compile files('libs/SocialSDK_umengqq.jar')
     compile files('libs/SocialSDK_umengsina.jar')

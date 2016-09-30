@@ -83,7 +83,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        gotoTargetAndFinish(MainActivity.class);
+        onBackPressed();
         return super.onSupportNavigateUp();
     }
 
