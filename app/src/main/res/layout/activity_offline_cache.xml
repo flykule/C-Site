@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:background="@android:color/white"
+              android:layout_height="match_parent">
+    <!-- 头部 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#f5fb69b7">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:onClick="goBack" />
+        <TextView
+            android:id="@+id/indicator_tv"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="30dp"
+            android:clickable="true"
+            android:drawableRight="@drawable/abc_spinner_mtrl_am_alpha"
+            android:drawablePadding="-15dp"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="按标题"
+            android:textColor="@drawable/choose_cache_indicator_tv_bg"
+            android:textSize="10sp" />
+        <ImageView
+            android:id="@+id/setting_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            />
+        <ImageView
+            android:id="@+id/search_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/setting_iv"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+            />
+
+
+    </RelativeLayout>
+
+        <com.example.castle.csite.util.FlexiListView
+            android:id="@+id/cache_lv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:listSelector="#0000"
+            android:scrollbars="none"
+            android:visibility="invisible"
+        />
+    <include
+        android:id="@+id/null_view"
+        layout="@layout/null_view"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:visibility="visible" />
+
+
+    <TextView
+            android:id="@+id/men_tv"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:background="#a19e9e"
+            android:text="      总/剩余内存:120MB/20MB"
+            android:textColor="#121212"
+            android:layout_height="wrap_content"/>
+
+
+
+    <RelativeLayout
+        android:id="@+id/buttom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/allstart_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部开始"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#121212"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+            android:visibility="visible"
+        />
+        <View
+            android:id="@+id/line"
+            android:layout_toRightOf="@id/allstart_tv"
+            android:layout_width="0.5dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#8888" />
+
+        <TextView
+
+            android:id="@+id/edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="编辑"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/line"
+            android:layout_marginLeft="10dp"
+            android:textColor="#121212"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+        />
+        <ImageView
+            android:id="@+id/refresh_iv"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ucrop_ic_rotate"
+
+        />
+    </RelativeLayout>
+    <LinearLayout
+            android:id="@+id/buttom_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/allselect_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部选择"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#121212"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+            android:visibility="visible"
+        />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#8888" />
+
+        <TextView
+            android:id="@+id/delete_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/line"
+            android:layout_marginLeft="10dp"
+            android:textColor="#121212"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+        />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="#8888" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="转MP4"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#121212"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+        />
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,6 +3,12 @@
     <color name="colorPrimary">#FF4081</color>
     <color name="colorPrimaryDark">#96073d</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="choose_indicator_nor">#f7f8fb</color>
+    <color name="choose_indicator_nor_selected">#595757</color>
+    <color name="bot_text_color_normal">#b9acb2</color>
+    <color name="bot_text_color_selected">#fefdfd</color>
+
     <color name="lighter">#dddddd</color>
     <color name="darker">#333333</color>
     <color name="lightest">#ffffff</color>

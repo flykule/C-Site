@@ -22,11 +22,12 @@ android {
 dependencies {
     def app = rootProject.ext.appDependencies
     def appTest = rootProject.ext.appTestDependencies
-
     compile app.androidSupport
     compile app.androidSupportV4
     compile app.androidAnnotations
     compile app.recyclerView
+    compile app.rxJava
+    compile app.rxAndroid
     compile app.design
     provided app.javaxAnnotation
     compile app.okHttp
@@ -40,4 +41,6 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    compile files('libs/butterknife-7.0.1.jar')
+    compile files('libs/fastjson-1.0.3.jar')
 }

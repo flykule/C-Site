@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center_horizontal"
+              android:background="#ede8e8"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<!--
+    <LinearLayout
+        android:id="@+id/top_ll"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#f5809f"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/login_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:clickable="true"
+            android:text="B币"
+            android:layout_marginTop="20dp"
+            android:textColor="#fff"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/forget_pwd_tv"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:clickable="true"
+            android:text="硬币"
+            android:layout_marginTop="20dp"
+            android:textColor="#fff"
+            android:textSize="26sp"/>
+
+    </LinearLayout>
+-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/B_coin_ll"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_bp_coin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="80dp"
+            android:layout_height="80dp">
+        <TextView
+            android:id="@+id/remain_tv"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="B币余额"
+            android:textColor="#c2baba"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/B_remain_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textColor="#000"
+            android:textSize="50sp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/pay_record_tv"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="交易记录"
+            android:textColor="#000"
+            android:textSize="26sp"/>
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_gray_arrow_right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
+    </LinearLayout>
+
+    <Button
+        android:background="#f5809f"
+        android:layout_below="@id/B_coin_ll"
+        android:layout_marginTop="25dp"
+
+        android:id="@+id/coin_btn"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:text="立即充值"
+        android:textColor="#fff"
+        android:textSize="24sp"/>
+</LinearLayout>

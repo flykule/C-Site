@@ -1,12 +1,13 @@
-package com.example.castle.csite.ui.activity;
+package com.example.castle.csite.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.castle.csite.R;
-import com.example.castle.csite.ui.base.BaseActivity;
-import com.example.castle.csite.view.BindLayout;
 import com.example.castle.csite.view.SetCheckBox;
 
 /**
@@ -14,8 +15,7 @@ import com.example.castle.csite.view.SetCheckBox;
  * @time 2016/9/21  19:04
  * @desc 设置与帮助页面
  */
-@BindLayout(id = R.layout.activity_setting)
-public class SettingActivity extends BaseActivity {
+public class SettingFragment extends Fragment {
 
     private SetCheckBox mScb_over;
     private SetCheckBox mScb_qp_play;
@@ -23,9 +23,16 @@ public class SettingActivity extends BaseActivity {
     private SetCheckBox mScb_no_message;
     private SetCheckBox mScb_vide_up;
 
+
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_setting, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         initUI();
         onclick();
     }
@@ -96,15 +103,15 @@ public class SettingActivity extends BaseActivity {
      */
     private void initUI() {
         //横屏播放
-        mScb_over = (SetCheckBox) findViewById(R.id.play_over);
+        mScb_over = (SetCheckBox) getActivity().findViewById(R.id.play_over);
         //全屏播放
-        mScb_qp_play = (SetCheckBox) findViewById(R.id.qp_play);
+        mScb_qp_play = (SetCheckBox) getActivity().findViewById(R.id.qp_play);
         //禁用动画
-        mScb_off_animation = (SetCheckBox) findViewById(R.id.off_Animation);
+        mScb_off_animation = (SetCheckBox) getActivity().findViewById(R.id.off_Animation);
         //不接收推送消息
-        mScb_no_message = (SetCheckBox) findViewById(R.id.no_message);
+        mScb_no_message = (SetCheckBox) getActivity().findViewById(R.id.no_message);
         //海外视频加速
-        mScb_vide_up = (SetCheckBox) findViewById(R.id.vide_up);
+        mScb_vide_up = (SetCheckBox) getActivity().findViewById(R.id.vide_up);
 
     }
 }
