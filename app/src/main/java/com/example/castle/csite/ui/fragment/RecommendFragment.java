@@ -69,7 +69,6 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         BannerPagerAdapter mBannerAdapter = new BannerPagerAdapter(mBanners);
         mBanner.setAdapter(mBannerAdapter);
         mBanner.setSwitchTime(2000);
-        mBanner.setIndicatorDotWidth(20);
     }
 
     /**

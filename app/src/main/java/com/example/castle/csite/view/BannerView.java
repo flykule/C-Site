@@ -24,8 +24,16 @@ import java.util.TimerTask;
  * 自定义轮播图
  */
 public class BannerView extends FrameLayout implements ViewPager.OnPageChangeListener {
-    private Context context;
     private static final int MSG = 0X100;
+    /**
+     * 轮播切换小圆点宽度默认宽度
+     */
+    private static final int DOT_DEFAULT_W = 5;
+    /**
+     * 默认的轮播时间
+     */
+    private static final int DEFAULT_TIME = 3000;
+    private Context context;
     /**
      * 轮播图最大数
      */
@@ -39,10 +47,6 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
     private LinearLayout carouselLayout;
     private Adapter adapter;
     /**
-     * 轮播切换小圆点宽度默认宽度
-     */
-    private static final int DOT_DEFAULT_W = 5;
-    /**
      * 轮播切换小圆点宽度
      */
     private int IndicatorDotWidth = DOT_DEFAULT_W;
@@ -51,10 +55,6 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
      */
     private boolean isUserTouched = false;
     /**
-     * 默认的轮播时间
-     */
-    private static final int DEFAULT_TIME = 3000;
-    /**
      * 设置轮播时间
      */
     private int switchTime = DEFAULT_TIME;
@@ -62,19 +62,44 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
      * 轮播图定时器
      */
     private Timer mTimer = new Timer();
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == MSG) {
+                if (currentPosition == totalCount - 1) {
+                    viewPager.setCurrentItem(showCount - 1, false);
+                } else {
+                    viewPager.setCurrentItem(currentPosition);
+                }
+            }
+        }
+    };
+    private TimerTask mTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            //用户滑动时，定时任务不响应
+            if (!isUserTouched) {
+                currentPosition = (currentPosition + 1) % totalCount;
+                handler.sendEmptyMessage(MSG);
+            }
+        }
+    };
 
     public BannerView(Context context) {
         super(context);
         this.context = context;
     }
+
     public BannerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
+
     public BannerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
     }
+
     private void init() {
         viewPager.setAdapter(null);
         carouselLayout.removeAllViews();
@@ -88,16 +113,11 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
             View view = new View(context);
             if (currentPosition == i) {
                 view.setPressed(true);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        IndicatorDotWidth + UiUtils.dip2px(3),
-                        IndicatorDotWidth + UiUtils.dip2px(3));
-                params.setMargins(IndicatorDotWidth, 0, 0, 0);
-                view.setLayoutParams(params);
-            } else {
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(IndicatorDotWidth, IndicatorDotWidth);
-                params.setMargins(IndicatorDotWidth, 0, 0, 0);
-                view.setLayoutParams(params);
             }
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(IndicatorDotWidth, IndicatorDotWidth);
+            params.setMargins(IndicatorDotWidth, 0, 0, 0);
+            view.setLayoutParams(params);
+
             view.setBackgroundResource(R.drawable.carousel_layout_dot);
             carouselLayout.addView(view);
         }
@@ -130,6 +150,7 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
             init();
         }
     }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -140,10 +161,12 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
         this.viewPager.addOnPageChangeListener(this);
         addView(view);
     }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
+
     @Override
     public void onPageSelected(int position) {
         currentPosition = position;
@@ -152,33 +175,62 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
             View view = carouselLayout.getChildAt(i);
             if (position % showCount == i) {
                 view.setSelected(true);
-                //当前位置的点要绘制的较大一点，高亮显示
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        IndicatorDotWidth + UiUtils.dip2px(3),
-                        IndicatorDotWidth + UiUtils.dip2px(3));
-                params.setMargins(IndicatorDotWidth, 0, 0, 0);
-                view.setLayoutParams(params);
             } else {
                 view.setSelected(false);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(IndicatorDotWidth, IndicatorDotWidth);
-                params.setMargins(IndicatorDotWidth, 0, 0, 0);
-                view.setLayoutParams(params);
             }
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(IndicatorDotWidth, IndicatorDotWidth);
+            params.setMargins(IndicatorDotWidth, 0, 0, 0);
+            view.setLayoutParams(params);
+
         }
     }
+
     @Override
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    public void cancelTimer() {
+        if (this.mTimer != null) {
+            this.mTimer.cancel();
+        }
+    }
+
+    /**
+     * 可自定义设置轮播图切换时间，单位毫秒
+     *
+     * @param switchTime millseconds
+     */
+    public void setSwitchTime(int switchTime) {
+        this.switchTime = switchTime;
+    }
+
+    /**
+     * @param indicatorDotWidth 圆点宽度
+     */
+    public void setIndicatorDotWidth(int indicatorDotWidth) {
+        IndicatorDotWidth = indicatorDotWidth;
+    }
+
+    public interface Adapter {
+        boolean isEmpty();
+
+        View getView(int position);
+
+        int getCount();
+    }
+
     class ViewPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
             return totalCount;
         }
+
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             position %= showCount;
@@ -186,14 +238,17 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
             container.addView(view);
             return view;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+
         @Override
         public int getItemPosition(Object object) {
             return super.getItemPosition(object);
         }
+
         @Override
         public void finishUpdate(ViewGroup container) {
             super.finishUpdate(container);
@@ -206,51 +261,6 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
                 viewPager.setCurrentItem(position, false);
             }
         }
-    }
-    private TimerTask mTimerTask = new TimerTask() {
-        @Override
-        public void run() {
-            //用户滑动时，定时任务不响应
-            if (!isUserTouched) {
-                currentPosition = (currentPosition + 1) % totalCount;
-                handler.sendEmptyMessage(MSG);
-            }
-        }
-    };
-    public void cancelTimer() {
-        if (this.mTimer != null) {
-            this.mTimer.cancel();
-        }
-    }
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == MSG) {
-                if (currentPosition == totalCount - 1) {
-                    viewPager.setCurrentItem(showCount - 1, false);
-                } else {
-                    viewPager.setCurrentItem(currentPosition);
-                }
-            }
-        }
-    };
-    /**
-     *可自定义设置轮播图切换时间，单位毫秒
-     * @param switchTime millseconds
-     */
-    public void setSwitchTime(int switchTime) {
-        this.switchTime = switchTime;
-    }
-    /**
-     * @param indicatorDotWidth
-     */
-    public void setIndicatorDotWidth(int indicatorDotWidth) {
-        IndicatorDotWidth = indicatorDotWidth;
-    }
-    public interface Adapter {
-        boolean isEmpty();
-        View getView(int position);
-        int getCount();
     }
 }
 
