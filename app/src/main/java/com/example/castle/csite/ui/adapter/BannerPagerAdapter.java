@@ -19,9 +19,9 @@ import java.util.List;
  * 轮播图adapter
  */
 public class BannerPagerAdapter implements BannerView.Adapter {
-    private final List<RecommendBanner.Banner> mBanners;
+    private final List<RecommendBanner.DataBean> mBanners;
 
-    public BannerPagerAdapter( List<RecommendBanner.Banner> banners) {
+    public BannerPagerAdapter( List<RecommendBanner.DataBean> banners) {
         mBanners = banners;
     }
 
@@ -36,18 +36,18 @@ public class BannerPagerAdapter implements BannerView.Adapter {
         final LayoutInflater inflater = LayoutInflater.from(UiUtils.getContext());
         View view = inflater.inflate(R.layout.item_banner, null);
         ImageView bannerView = (ImageView) view.findViewById(R.id.iv_banner);
-        final RecommendBanner.Banner banner = mBanners.get(position);
+        final RecommendBanner.DataBean banner = mBanners.get(position);
         bannerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UiUtils.getContext(), WebActivity.class);
-                intent.putExtra(WebActivity.WEB_URL, banner.getLink());
+                intent.putExtra(WebActivity.WEB_URL, banner.getValue());
                 intent.putExtra(WebActivity.WEB_TITLE, banner.getTitle());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 UiUtils.getContext().startActivity(intent);
             }
         });
-        ImageLoader.load(UiUtils.getContext(),banner.getCover(),bannerView);
+        ImageLoader.load(UiUtils.getContext(),banner.getImage(),bannerView);
         return view;
     }
 

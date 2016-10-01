@@ -37,7 +37,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     BannerView mBanner;
 
     private ApiService mApiService;
-    private List<RecommendBanner.Banner> mBanners;
+    private List<RecommendBanner.DataBean> mBanners;
     private RecommendBannerInteractor mInteractor;
 
     /**
@@ -48,7 +48,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         mInteractor.execute(new SimpleSubscriber<RecommendBanner>() {
             @Override
             public void onNext(RecommendBanner recommendBanner) {
-                mBanners = recommendBanner.getResult();
+                mBanners = recommendBanner.getData();
                 LogUtils.d("读取数据完成，拿到推荐页面banner");
                 initBanner();
                 try {
@@ -113,7 +113,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     class RecommendBannerInteractor extends Interactor<RecommendBanner, String> {
         @Override
         protected Observable<RecommendBanner> buildObservable(String[] parameter) {
-            mApiService = getApi("http://bangumi.bilibili.com/");
+            mApiService = getApi("http://app.bilibili.com/");
             return mApiService.getRecommendBanner();
         }
     }

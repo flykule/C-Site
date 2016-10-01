@@ -7,9 +7,24 @@ import java.util.List;
  * 推荐页面banner
  */
 public class RecommendBanner {
+
+    /**
+     * code : 0
+     * data : [{"title":"国漫振兴 青春助力","value":"http://www.bilibili.com/topic/v2/phone1543.html","image":"http://i0.hdslb.com/bfs/archive/fa881e70ab6faada14a6ada5a088e62a97c11660.jpg","type":2,"weight":1,"remark":"","hash":"efaf2eb4d8ab3fa70a908dc951a1b31d"},{"title":"阴阳师","value":"http://acg.tv/u1Ci","image":"http://i0.hdslb.com/bfs/archive/3f43fd6677cef409df0d27b6601c0555f54ed69b.jpg","type":2,"weight":2,"remark":"","hash":"2b86f7a812cb08da69058caa42701d2e"},{"title":"频道精选 生活区 No.31","value":"http://www.bilibili.com/topic/v2/phone1546.html","image":"http://i0.hdslb.com/bfs/archive/2f123c0b23f267c7e32d715a9e69ab4b88e2a0ee.jpg","type":2,"weight":2,"remark":"","hash":"a5c83b8cf8a2eb44c2fc528059f552b1"}]
+     */
+
     private int code;
-    private String message;
-    private List<Banner> result;
+    /**
+     * title : 国漫振兴 青春助力
+     * value : http://www.bilibili.com/topic/v2/phone1543.html
+     * image : http://i0.hdslb.com/bfs/archive/fa881e70ab6faada14a6ada5a088e62a97c11660.jpg
+     * type : 2
+     * weight : 1
+     * remark :
+     * hash : efaf2eb4d8ab3fa70a908dc951a1b31d
+     */
+
+    private List<DataBean> data;
 
     public int getCode() {
         return code;
@@ -19,88 +34,22 @@ public class RecommendBanner {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public List<Banner> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Banner> result) {
-        this.result = result;
-    }
-
-    public static class Banner {
-        /**
-         * cover : http://i0.hdslb.com/bfs/bangumi/c36b9023905f661c7632eb66be28df7a74c6bd60.jpg
-         * cursor : 1474768920987
-         * desc : 一位是不可一世的英雄王，一位是摒弃理想的守护者。他们都是Archer，真伪无关乎胜败。本期Fate/IT已张弦引箭。
-         * id : 1775
-         * is_new : 1
-         * link : http://www.bilibili.com/html/activity-20160923fgo.html
-         * title : Fate/Infinite Tales EP.3 伪物真传
-         */
-
-        private String cover;
-        private long cursor;
-        private String desc;
-        private int id;
-        private int is_new;
-        private String link;
+    public static class DataBean {
         private String title;
-
-        public String getCover() {
-            return cover;
-        }
-
-        public void setCover(String cover) {
-            this.cover = cover;
-        }
-
-        public long getCursor() {
-            return cursor;
-        }
-
-        public void setCursor(long cursor) {
-            this.cursor = cursor;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public int getIs_new() {
-            return is_new;
-        }
-
-        public void setIs_new(int is_new) {
-            this.is_new = is_new;
-        }
-
-        public String getLink() {
-            return link;
-        }
-
-        public void setLink(String link) {
-            this.link = link;
-        }
+        private String value;
+        private String image;
+        private int type;
+        private int weight;
+        private String remark;
+        private String hash;
 
         public String getTitle() {
             return title;
@@ -108,6 +57,54 @@ public class RecommendBanner {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+
+        public void setWeight(int weight) {
+            this.weight = weight;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public String getHash() {
+            return hash;
+        }
+
+        public void setHash(String hash) {
+            this.hash = hash;
         }
     }
 }
