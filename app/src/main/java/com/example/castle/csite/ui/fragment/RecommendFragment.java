@@ -2,12 +2,15 @@ package com.example.castle.csite.ui.fragment;
 
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendBanner;
+import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
+import com.example.castle.csite.ui.adapter.RecommendRecyclerAdapter;
 import com.example.castle.csite.ui.base.BaseFragment;
 import com.example.castle.csite.util.LogUtils;
 import com.example.castle.csite.util.SimpleSubscriber;
@@ -82,6 +85,19 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         mSwipeRefreshLayout.setColorSchemeColors(UiUtils.getColor(R.color.colorPrimary));
         mSwipeRefreshLayout.setRefreshing(true);
         getBanners();
+        getContent();
+    }
+
+    private void getContent() {
+        RecommendContentInteractor interactor = new RecommendContentInteractor();
+        interactor.execute(new SimpleSubscriber<RecommendContent>() {
+            @Override
+            public void onNext(RecommendContent recommendContent) {
+                RecommendRecyclerAdapter adapter = new RecommendRecyclerAdapter(recommendContent.getResult());
+                mRecommendRecyclerView.setAdapter(adapter);
+                mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+        });
     }
 
     @Override
@@ -117,6 +133,15 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         @Override
         protected Observable<RecommendBanner> buildObservable(String[] parameter) {
             return mApiService.getRecommendBanner();
+        }
+    }
+    /**
+     * 继承Interactor用于获取数据
+     */
+    class RecommendContentInteractor extends Interactor<RecommendContent, String> {
+        @Override
+        protected Observable<RecommendContent> buildObservable(String[] parameter) {
+            return mApiService.getRecommendContent();
         }
     }
 

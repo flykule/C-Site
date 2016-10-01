@@ -12,8 +12,6 @@ import android.widget.FrameLayout;
 
 import com.example.castle.csite.R;
 
-import static com.umeng.socialize.utils.DeviceConfig.context;
-
 /**
  * Created by castle on 16-10-1.
  * 自定义推荐内容View
@@ -76,7 +74,7 @@ public class RecommendContentView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        View view = LayoutInflater.from(context).inflate(R.layout.recommend_content_layout, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.recommend_content_layout, null);
         mHeaderView = (FrameLayout)view.findViewById(R.id.header_view);
         mGroupImageRecycler = (RecyclerView)view.findViewById(R.id.group_image_recycler);
         mFooterView = (FrameLayout)view.findViewById(R.id.footer_view);

@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.castle.csite.R;
+import com.example.castle.csite.bean.RecommendContent;
+import com.example.castle.csite.util.ImageLoader;
+import com.example.castle.csite.util.UiUtils;
 
 import java.util.List;
 
@@ -17,13 +20,12 @@ import butterknife.Bind;
  * Created by castle on 16-10-1.
  * 推荐页面图片适配器
  */
-
 public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<RecommendImageRecyclerAdapter.ViewHolder> {
 
 
-    private List<String> mBeanList;
+    private List<RecommendContent.ResultBean.BodyBean> mBeanList;
 
-    public RecommendImageRecyclerAdapter(List<String> beanList) {
+    public RecommendImageRecyclerAdapter(List<RecommendContent.ResultBean.BodyBean> beanList) {
         mBeanList = beanList;
     }
 
@@ -36,7 +38,11 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        RecommendContent.ResultBean.BodyBean bean = mBeanList.get(position);
+        ImageLoader.load(UiUtils.getContext(),bean.getCover(),holder.mGroupImageView);
+        holder.mTvAnswerWatch.setText(bean.getPlay());
+        holder.mTvAnswerDanmaku.setText(bean.getTitle());
+        holder.mGroupDescText.setText(bean.getTitle());
     }
 
 

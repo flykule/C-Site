@@ -1,5 +1,6 @@
 package com.example.castle.csite.ui.adapter;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.FrameLayout;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendContent;
+import com.example.castle.csite.util.UiUtils;
 
 import java.util.List;
 
@@ -21,6 +23,10 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
 
     private List<RecommendContent.ResultBean> mBeanList;
 
+    public RecommendRecyclerAdapter(List<RecommendContent.ResultBean> beanList) {
+        mBeanList = beanList;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -30,7 +36,10 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        List<RecommendContent.ResultBean.BodyBean> body = mBeanList.get(position).getBody();
+        RecommendImageRecyclerAdapter adapter = new RecommendImageRecyclerAdapter(body);
+        holder.mGroupImageRecycler.setAdapter(adapter);
+        holder.mGroupImageRecycler.setLayoutManager(new GridLayoutManager(UiUtils.getContext(),2));
     }
 
 
@@ -49,6 +58,9 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
 
         public ViewHolder(View itemView) {
             super(itemView);
+            mHeaderView = (FrameLayout) itemView.findViewById(R.id.header_view);
+            mGroupImageRecycler = (RecyclerView) itemView.findViewById(R.id.group_image_recycler);
+            mFooterView = (FrameLayout) itemView.findViewById(R.id.footer_view);
         }
     }
 
