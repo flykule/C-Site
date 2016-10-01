@@ -21,6 +21,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
 
+
+
 /**
  * Created by castle on 16-9-21.
  * 推荐页面
@@ -44,6 +46,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
      * 在这里得到banner
      */
     private void getBanners() {
+        mApiService = getApi("http://app.bilibili.com/");
         mInteractor = new RecommendBannerInteractor();
         mInteractor.execute(new SimpleSubscriber<RecommendBanner>() {
             @Override
@@ -113,7 +116,6 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     class RecommendBannerInteractor extends Interactor<RecommendBanner, String> {
         @Override
         protected Observable<RecommendBanner> buildObservable(String[] parameter) {
-            mApiService = getApi("http://app.bilibili.com/");
             return mApiService.getRecommendBanner();
         }
     }
