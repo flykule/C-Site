@@ -1,15 +1,21 @@
 package com.example.castle.csite.ui.fragment;
 
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendBanner;
 import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
+import com.example.castle.csite.ui.adapter.MyLinearLayoutManager;
 import com.example.castle.csite.ui.adapter.RecommendRecyclerAdapter;
 import com.example.castle.csite.ui.base.BaseFragment;
 import com.example.castle.csite.util.LogUtils;
@@ -38,7 +44,6 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     RecyclerView mRecommendRecyclerView;
     @Bind(R.id.swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.banner_view_pager)
     BannerView mBanner;
 
     private ApiService mApiService;
@@ -67,7 +72,17 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         });
 
     }
-
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        mBanner = new BannerView(getContext());
+        FrameLayout.LayoutParams params =
+                new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        450);
+        mBanner.setLayoutParams(params);
+        return view;
+    }
     /**
      * banner数据已经拿到，在这里初始化
      */
@@ -94,8 +109,9 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
             @Override
             public void onNext(RecommendContent recommendContent) {
                 RecommendRecyclerAdapter adapter = new RecommendRecyclerAdapter(recommendContent.getResult());
+                adapter.setHeaderView(mBanner);
                 mRecommendRecyclerView.setAdapter(adapter);
-                mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                mRecommendRecyclerView.setLayoutManager(new MyLinearLayoutManager(getContext()));
             }
         });
     }

@@ -40,6 +40,7 @@ public class RecommendContentView extends FrameLayout {
         mHeaderView.removeAllViews();
         mHeaderView.addView(view);
         mHeaderView.setVisibility(VISIBLE);
+        invalidate();
     }
 
     public void setFooterView(View view) {
@@ -81,5 +82,15 @@ public class RecommendContentView extends FrameLayout {
         addView(view);
     }
 
+    public FrameLayout getHeaderView() {
+        return mHeaderView;
+    }
 
+    public RecyclerView getGroupImageRecycler() {
+        return mGroupImageRecycler;
+    }
+
+    public FrameLayout getFooterView() {
+        return mFooterView;
+    }
 }

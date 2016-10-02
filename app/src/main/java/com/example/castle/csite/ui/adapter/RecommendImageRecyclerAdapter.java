@@ -41,7 +41,7 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
         RecommendContent.ResultBean.BodyBean bean = mBeanList.get(position);
         ImageLoader.load(UiUtils.getContext(),bean.getCover(),holder.mGroupImageView);
         holder.mTvAnswerWatch.setText(bean.getPlay());
-        holder.mTvAnswerDanmaku.setText(bean.getTitle());
+        holder.mTvAnswerDanmaku.setText(bean.getDanmaku());
         holder.mGroupDescText.setText(bean.getTitle());
     }
 

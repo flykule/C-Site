@@ -88,6 +88,7 @@ public class BannerView extends FrameLayout implements ViewPager.OnPageChangeLis
     public BannerView(Context context) {
         super(context);
         this.context = context;
+        onFinishInflate();
     }
 
     public BannerView(Context context, AttributeSet attrs) {

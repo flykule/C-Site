@@ -2,46 +2,46 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/group_image_view"
             android:layout_width="match_parent"
-            android:layout_height="70dp"/>
+            android:layout_height="120dp"
+            android:scaleType="fitXY"/>
         <TextView
             android:id="@+id/group_desc_text"
             android:layout_below="@id/group_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/group_desc_text">
         <TextView
-            android:layout_below="@id/group_desc_text"
             android:id="@+id/tv_answer_danmaku"
-            android:layout_width="wrap_content"
-            android:gravity="start"
-            android:text="123456789"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:textSize="25sp"
+            android:layout_width="0dp"
+            android:text="456"
             android:textColor="@color/darkest"
-            android:drawableLeft="@drawable/ic_tv_play"
+            android:drawableLeft="@drawable/ic_answer_coin"
             android:drawingCacheQuality="low"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <TextView
-            android:layout_below="@id/group_desc_text"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="100dp"
             android:text="456"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
-            android:textSize="25sp"
             android:textColor="@color/darkest"
             android:id="@+id/tv_answer_watch"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:drawableLeft="@drawable/ic_answer_danmaku"
             android:drawingCacheQuality="low"
             android:layout_height="wrap_content"/>
+        </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
