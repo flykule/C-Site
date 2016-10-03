@@ -13,12 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendBanner;
 import com.example.castle.csite.bean.RecommendContent;
+import com.example.castle.csite.bean.RecommendRegion;
+import com.example.castle.csite.listener.OnRecommendRefreshDataListener;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
+import com.example.castle.csite.ui.adapter.RecommendImageRecyclerAdapter;
 import com.example.castle.csite.ui.adapter.RecommendRecyclerAdapter;
 import com.example.castle.csite.ui.base.BaseFragment;
 import com.example.castle.csite.util.LogUtils;
@@ -35,13 +40,13 @@ import butterknife.ButterKnife;
 import rx.Observable;
 
 
-
 /**
  * Created by castle on 16-9-21.
  * 推荐页面
  */
 @BindLayout(id = R.layout.fragment_recommend)
-public class RecommendFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class RecommendFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener
+        , OnRecommendRefreshDataListener {
 
 
     @Bind(R.id.recommend_recycler_view)
@@ -53,6 +58,8 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     private ApiService mApiService;
     private List<RecommendBanner.DataBean> mBanners;
     private RecommendBannerInteractor mInteractor;
+    private RecommendRecyclerAdapter mAdapter;
+    private RecommendRegionInteractor mRecommendRegionInteractor;
 
     /**
      * 在这里得到banner
@@ -81,6 +88,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         mBanner.setLayoutParams(params);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeColors(UiUtils.getColor(R.color.colorPrimary));
+
         return view;
     }
     /**
@@ -112,6 +120,8 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
      */
     @Override
     protected void initData() {
+        mAdapter = new RecommendRecyclerAdapter(null, this);
+        mRecommendRegionInteractor = new RecommendRegionInteractor();
         setRefresh(true);
         getBanners();
         getContent();
@@ -126,9 +136,9 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         interactor.execute(new SimpleSubscriber<RecommendContent>() {
             @Override
             public void onNext(RecommendContent recommendContent) {
-                RecommendRecyclerAdapter adapter = new RecommendRecyclerAdapter(recommendContent.getResult());
-                adapter.setHeaderView(mBanner);
-                mRecommendRecyclerView.setAdapter(adapter);
+                mAdapter.setBeanList(recommendContent.getResult());
+                mAdapter.setHeaderView(mBanner);
+                mRecommendRecyclerView.setAdapter(mAdapter);
                 mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
@@ -154,6 +164,25 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         ButterKnife.unbind(this);
     }
 
+    @Override
+    public void onRefreshRegion(final TextView tv, final ImageView iv,
+                                final RecommendImageRecyclerAdapter adapter) {
+        mRecommendRegionInteractor.execute(new SimpleSubscriber<RecommendRegion>() {
+            @Override
+            public void onNext(RecommendRegion recommendRegion) {
+                adapter.setBeanList(recommendRegion.getResult());
+                adapter.notifyDataSetChanged();
+                tv.setText("换一波推荐");
+                iv.clearAnimation();
+            }
+        });
+    }
+
+    @Override
+    public List<RecommendContent.ResultBean> OnRefreshData() {
+        return null;
+    }
+
     /**
      * 继承Interactor用于获取数据
      */
@@ -170,6 +199,15 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         @Override
         protected Observable<RecommendContent> buildObservable(String[] parameter) {
             return mApiService.getRecommendContent();
+        }
+    }
+    /**
+     * 继承Interactor用于获取推荐块数据
+     */
+    class RecommendRegionInteractor extends Interactor<RecommendRegion, String> {
+        @Override
+        protected Observable<RecommendRegion> buildObservable(String[] parameter) {
+            return mApiService.getRecommendRegion();
         }
     }
 

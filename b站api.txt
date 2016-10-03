@@ -2,6 +2,7 @@
 ##推荐页面
 - Banner: http://app.bilibili.com/x/banner?plat=4&build=426003&channel=bili
 - 第一页： http://app.bilibili.com/x/show/old?appkey=1d8b6e7d45233436&build=426003&channel=bili&mobi_app=android&platform=android&screen=xxhdpi&ts=1475290047000&sign=c204bbf11276db5aa2173408751bc1ba
+- 刷新推荐： http://app.bilibili.com/x/show/hot/old?platform=android&device=&build=426003&ts=1475481371000&access_key=
 - 第二页： http://bangumi.bilibili.com/api/get_season_by_tag?appkey=1d8b6e7d45233436&build=426003&mobi_app=android&page=1&pagesize=4&platform=android&tag_id=109&ts=1475290047000&sign=7c2123909446e36617aaffef83bd4b27
 
 ##直播页面：

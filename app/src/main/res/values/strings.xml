@@ -10,6 +10,7 @@
     <string name="menu_copy">复制链接</string>
     <string name="header_hot">热门推荐</string>
     <string name="tv_indicator_rank">排行榜</string>
+    <string name="foot_hot">换一波推荐</string>
     <string-array name="MyCollect">
         <item>视频收藏</item>
         <item>主题收藏</item>

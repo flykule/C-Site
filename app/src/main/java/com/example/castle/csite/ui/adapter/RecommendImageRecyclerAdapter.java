@@ -70,5 +70,11 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
         }
     }
 
+    public List<RecommendContent.ResultBean.BodyBean> getBeanList() {
+        return mBeanList;
+    }
 
+    public void setBeanList(List<RecommendContent.ResultBean.BodyBean> beanList) {
+        mBeanList = beanList;
+    }
 }
