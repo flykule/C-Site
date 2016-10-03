@@ -18,4 +18,5 @@
     <color name="circle_grey">#9d9d9d</color>
     <color name="circle_red">#F44336</color>
     <color name="circle_green">#4CAF50</color>
+    <color name="yellow">#FDDC02</color>
 </resources>

@@ -1,13 +1,17 @@
 package com.example.castle.csite.ui.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 import com.example.castle.csite.R;
@@ -15,7 +19,6 @@ import com.example.castle.csite.bean.RecommendBanner;
 import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
-import com.example.castle.csite.ui.adapter.MyLinearLayoutManager;
 import com.example.castle.csite.ui.adapter.RecommendRecyclerAdapter;
 import com.example.castle.csite.ui.base.BaseFragment;
 import com.example.castle.csite.util.LogUtils;
@@ -24,6 +27,7 @@ import com.example.castle.csite.util.UiUtils;
 import com.example.castle.csite.view.BannerView;
 import com.example.castle.csite.view.BindLayout;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import butterknife.Bind;
@@ -62,12 +66,6 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
                 mBanners = recommendBanner.getData();
                 LogUtils.d("读取数据完成，拿到推荐页面banner");
                 initBanner();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -81,6 +79,8 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         450);
         mBanner.setLayoutParams(params);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeColors(UiUtils.getColor(R.color.colorPrimary));
         return view;
     }
     /**
@@ -90,6 +90,21 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         BannerPagerAdapter mBannerAdapter = new BannerPagerAdapter(mBanners);
         mBanner.setAdapter(mBannerAdapter);
         mBanner.setSwitchTime(2000);
+        //只有banner渲染完成才算加载完成
+        mBanner.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        //及时销毁避免内存泄漏
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            mBanner.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        } else {
+                            mBanner.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                        }
+                    }
+                }
+        );
     }
 
     /**
@@ -97,10 +112,13 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
      */
     @Override
     protected void initData() {
-        mSwipeRefreshLayout.setColorSchemeColors(UiUtils.getColor(R.color.colorPrimary));
-        mSwipeRefreshLayout.setRefreshing(true);
+        setRefresh(true);
         getBanners();
         getContent();
+    }
+
+    private void setRefresh(boolean enabled) {
+        mSwipeRefreshLayout.setRefreshing(enabled);
     }
 
     private void getContent() {
@@ -111,7 +129,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
                 RecommendRecyclerAdapter adapter = new RecommendRecyclerAdapter(recommendContent.getResult());
                 adapter.setHeaderView(mBanner);
                 mRecommendRecyclerView.setAdapter(adapter);
-                mRecommendRecyclerView.setLayoutManager(new MyLinearLayoutManager(getContext()));
+                mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
     }
@@ -126,13 +144,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
      */
     @Override
     public void onRefresh() {
-        // TODO Auto-generated method stub
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        }, 1000);
+        new RecommendHandler(this).sendEmptyMessageDelayed(0, 2000);
     }
 
 
@@ -158,6 +170,21 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         @Override
         protected Observable<RecommendContent> buildObservable(String[] parameter) {
             return mApiService.getRecommendContent();
+        }
+    }
+
+    private static class RecommendHandler extends Handler {
+        private WeakReference<RecommendFragment> mRecommendFragment;
+
+        public RecommendHandler(RecommendFragment ref) {
+            mRecommendFragment = new WeakReference<>(ref);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (mRecommendFragment.get() != null) {
+                mRecommendFragment.get().setRefresh(false);
+            }
         }
     }
 
