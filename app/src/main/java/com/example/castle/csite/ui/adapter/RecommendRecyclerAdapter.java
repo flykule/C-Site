@@ -1,7 +1,6 @@
 package com.example.castle.csite.ui.adapter;
 
 import android.graphics.Rect;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -91,7 +90,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             }
         });
     }
-
+    //推荐块刷新
     private void refreshHotRegion(ViewHolder myHolder) {
         Animation animation = AnimationUtils.loadAnimation(UiUtils.getContext(), R.anim.refresh_rotate);
         animation.setInterpolator(new LinearInterpolator());
@@ -99,7 +98,6 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
         ImageView imageView = (ImageView) myHolder.mFooterView.findViewById(R.id.iv_refresh_more);
         imageView.startAnimation(animation);
         textView.setText("嘿咻嘿咻～");
-        SystemClock.sleep(3000);
         RecommendImageRecyclerAdapter adapter = ((RecommendImageRecyclerAdapter) myHolder.mGroupImageRecycler.getAdapter());
         mListener.onRefreshRegion(textView, imageView, adapter);
     }
