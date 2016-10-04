@@ -62,7 +62,11 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
                 break;
             case "live":
                 hideHeadAndFoot(myHolder);
-                setHead(myHolder, R.layout.header_live);
+                View view = mInflater.inflate(R.layout.header_live, null);
+                TextView tv = (TextView) view.findViewById(R.id.tv_head_live_middle);
+                tv.setText(resultBean.getHead().getCount());
+                tv.setTextColor(UiUtils.getColor(R.color.colorPrimary));
+                setHead(myHolder,view);
                 break;
             default:
                 hideHeadAndFoot(myHolder);
@@ -102,14 +106,22 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     }
 
     private void setFoot(ViewHolder myHolder,int layoutId) {
+        myHolder.mFooterView.removeAllViews();
         myHolder.mFooterView.setVisibility(View.VISIBLE);
         View hotFoot = mInflater.inflate(layoutId, null);
         myHolder.mFooterView.addView(hotFoot);
     }
 
     private void setHead(ViewHolder myHolder,int layoutId) {
+        myHolder.mHeaderView.removeAllViews();
         View hotHead = mInflater.inflate(layoutId, null);
         myHolder.mHeaderView.addView(hotHead);
+        myHolder.mHeaderView.setVisibility(View.VISIBLE);
+    }
+
+    private void setHead(ViewHolder myHolder,View head) {
+        myHolder.mHeaderView.removeAllViews();
+        myHolder.mHeaderView.addView(head);
         myHolder.mHeaderView.setVisibility(View.VISIBLE);
     }
 

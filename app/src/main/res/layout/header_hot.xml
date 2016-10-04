@@ -4,12 +4,13 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp">
 
-    <TextView
+    <com.example.castle.csite.view.DrawableCenterTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:drawablePadding="3dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="12dp"
         android:drawableLeft="@drawable/ic_header_hot"
         android:text="@string/header_hot"
         android:textColor="@color/darkest"/>

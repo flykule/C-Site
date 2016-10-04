@@ -3,12 +3,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-    <TextView
+    <com.example.castle.csite.view.DrawableCenterTextView
+        android:layout_marginTop="7dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="3dp"
+        android:drawablePadding="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="7dp"
+        android:gravity="center_vertical"
         android:drawableLeft="@drawable/ic_head_live"
         android:text="@string/header_live"
         android:textColor="@color/darkest"/>
@@ -16,10 +17,10 @@
     <TextView
         android:id="@+id/tv_head_live_right"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="3dp"
-        android:layout_marginTop="7dp"
         android:textColor="@color/darkest"
         android:paddingLeft="5dp"
         android:paddingTop="7dp"
@@ -31,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="3dp"
-        android:layout_marginTop="7dp"
         android:textColor="@color/colorPrimary"
         android:paddingLeft="5dp"
         android:paddingTop="7dp"
@@ -42,11 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="3dp"
-        android:layout_marginTop="7dp"
         android:textColor="@color/darkest"
         android:paddingLeft="5dp"
         android:paddingTop="7dp"
         android:text="@string/tv_head_live_left"/>
-
-
 </RelativeLayout>

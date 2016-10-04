@@ -12,6 +12,10 @@
         <item name="android:itemBackground">@android:color/white</item>
         <item name="android:itemTextAppearance">@style/MyActionBar.MenuTextStyle</item>
     </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 
     <style name="MyToolbarTheme" parent="Widget.AppCompat.ActionBar">
         <item name="elevation">0dp</item>

@@ -94,6 +94,15 @@ public class RecommendContent {
             private String gotoX;
             private String style;
             private String title;
+            private String count;
+
+            public String getCount() {
+                return count;
+            }
+
+            public void setCount(String count) {
+                this.count = count;
+            }
 
             public String getParam() {
                 return param;
