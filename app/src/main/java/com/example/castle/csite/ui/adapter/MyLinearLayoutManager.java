@@ -72,108 +72,11 @@ public class MyLinearLayoutManager extends android.support.v7.widget.LinearLayou
 
     @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
-        final int widthMode = View.MeasureSpec.getMode(widthSpec);
-        final int heightMode = View.MeasureSpec.getMode(heightSpec);
-
-        final int widthSize = View.MeasureSpec.getSize(widthSpec);
-        final int heightSize = View.MeasureSpec.getSize(heightSpec);
-
-        final boolean hasWidthSize = widthMode != View.MeasureSpec.UNSPECIFIED;
-        final boolean hasHeightSize = heightMode != View.MeasureSpec.UNSPECIFIED;
-
-        final boolean exactWidth = widthMode == View.MeasureSpec.EXACTLY;
-        final boolean exactHeight = heightMode == View.MeasureSpec.EXACTLY;
-
-        final int unspecified = makeUnspecifiedSpec();
-
-        if (exactWidth && exactHeight) {
-            // in case of exact calculations for both dimensions let's use default "onMeasure" implementation
-            super.onMeasure(recycler, state, widthSpec, heightSpec);
-            return;
-        }
-
-        final boolean vertical = getOrientation() == VERTICAL;
-
-        initChildDimensions(widthSize, heightSize, vertical);
-
-        int width = 0;
-        int height = 0;
-
-        // it's possible to get scrap views in recycler which are bound to old (invalid) adapter entities. This
-        // happens because their invalidation happens after "onMeasure" method. As a workaround let's clear the
-        // recycler now (it should not cause any performance issues while scrolling as "onMeasure" is never
-        // called whiles scrolling)
-        recycler.clear();
-
-        final int stateItemCount = state.getItemCount();
-        final int adapterItemCount = getItemCount();
-        // adapter always contains actual data while state might contain old data (f.e. data before the animation is
-        // done). As we want to measure the view with actual data we must use data from the adapter and not from  the
-        // state
-        for (int i = 0; i < adapterItemCount; i++) {
-            if (vertical) {
-                if (!hasChildSize) {
-                    if (i < stateItemCount) {
-                        // we should not exceed state count, otherwise we'll get IndexOutOfBoundsException. For such items
-                        // we will use previously calculated dimensions
-                        measureChild(recycler, i, widthSize, unspecified, childDimensions);
-                    } else {
-                        logMeasureWarning(i);
-                    }
-                }
-                height += childDimensions[CHILD_HEIGHT];
-                if (i == 0) {
-                    width = childDimensions[CHILD_WIDTH];
-                }
-                if (hasHeightSize && height >= heightSize) {
-                    break;
-                }
-            } else {
-                if (!hasChildSize) {
-                    if (i < stateItemCount) {
-                        // we should not exceed state count, otherwise we'll get IndexOutOfBoundsException. For such items
-                        // we will use previously calculated dimensions
-                        measureChild(recycler, i, unspecified, heightSize, childDimensions);
-                    } else {
-                        logMeasureWarning(i);
-                    }
-                }
-                width += childDimensions[CHILD_WIDTH];
-                if (i == 0) {
-                    height = childDimensions[CHILD_HEIGHT];
-                }
-                if (hasWidthSize && width >= widthSize) {
-                    break;
-                }
-            }
-        }
-
-        if (exactWidth) {
-            width = widthSize;
-        } else {
-            width += getPaddingLeft() + getPaddingRight();
-            if (hasWidthSize) {
-                width = Math.min(width, widthSize);
-            }
-        }
-
-        if (exactHeight) {
-            height = heightSize;
-        } else {
-            height += getPaddingTop() + getPaddingBottom();
-            if (hasHeightSize) {
-                height = Math.min(height, heightSize);
-            }
-        }
-
-        setMeasuredDimension(width, height);
-
-        if (view != null && overScrollMode == ViewCompat.OVER_SCROLL_IF_CONTENT_SCROLLS) {
-            final boolean fit = (vertical && (!hasHeightSize || height < heightSize))
-                    || (!vertical && (!hasWidthSize || width < widthSize));
-
-            ViewCompat.setOverScrollMode(view, fit ? ViewCompat.OVER_SCROLL_NEVER : ViewCompat.OVER_SCROLL_ALWAYS);
-        }
+        View view = recycler.getViewForPosition(0);
+        measureChild(view, widthSpec, heightSpec);
+        int measuredWidth = View.MeasureSpec.getSize(widthSpec);
+        int measuredHeight = view.getMeasuredHeight();
+        setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
     private void logMeasureWarning(int child) {

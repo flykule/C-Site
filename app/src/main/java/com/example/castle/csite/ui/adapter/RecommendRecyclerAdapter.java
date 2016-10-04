@@ -3,6 +3,7 @@ package com.example.castle.csite.ui.adapter;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,6 +47,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     protected RecyclerView.ViewHolder getNormalViewHolder(ViewGroup parent) {
         mInflater = LayoutInflater.from(parent.getContext());
         View view = mInflater.inflate(R.layout.item_recommend_content, parent, false);
+        view.setMinimumHeight(parent.getMeasuredHeight()/4);
         return new ViewHolder(view);
     }
 
@@ -58,12 +60,19 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             case "recommend":
                 initRecommendRegion(myHolder);
                 break;
+            case "live":
+                hideHeadAndFoot(myHolder);
+                setHead(myHolder, R.layout.header_live);
+                break;
             default:
-                myHolder.mHeaderView.setVisibility(View.GONE);
-                myHolder.mFooterView.setVisibility(View.GONE);
+                hideHeadAndFoot(myHolder);
                 break;
         }
-
+        //因为有多个type，必须动态设置宽高
+        LinearLayoutCompat.LayoutParams params =
+                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+        myHolder.itemView.setLayoutParams(params);
         List<RecommendContent.ResultBean.BodyBean> body = resultBean.getBody();
         RecommendImageRecyclerAdapter adapter = new RecommendImageRecyclerAdapter(body);
         myHolder.mGroupImageRecycler.setAdapter(adapter);
@@ -76,13 +85,14 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             });
     }
 
+    private void hideHeadAndFoot(ViewHolder myHolder) {
+        myHolder.mHeaderView.setVisibility(View.GONE);
+        myHolder.mFooterView.setVisibility(View.GONE);
+    }
+
     private void initRecommendRegion(final ViewHolder myHolder) {
-        View hotHead = mInflater.inflate(R.layout.header_hot, null);
-        myHolder.mHeaderView.addView(hotHead);
-        myHolder.mHeaderView.setVisibility(View.VISIBLE);
-        View hotFoot = mInflater.inflate(R.layout.foot_hot, null);
-        myHolder.mFooterView.addView(hotFoot);
-        myHolder.mFooterView.setVisibility(View.VISIBLE);
+        setHead(myHolder,R.layout.header_hot);
+        setFoot(myHolder,R.layout.foot_hot);
         myHolder.mFooterView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,10 +100,24 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             }
         });
     }
+
+    private void setFoot(ViewHolder myHolder,int layoutId) {
+        myHolder.mFooterView.setVisibility(View.VISIBLE);
+        View hotFoot = mInflater.inflate(layoutId, null);
+        myHolder.mFooterView.addView(hotFoot);
+    }
+
+    private void setHead(ViewHolder myHolder,int layoutId) {
+        View hotHead = mInflater.inflate(layoutId, null);
+        myHolder.mHeaderView.addView(hotHead);
+        myHolder.mHeaderView.setVisibility(View.VISIBLE);
+    }
+
     //推荐块刷新
     private void refreshHotRegion(ViewHolder myHolder) {
         Animation animation = AnimationUtils.loadAnimation(UiUtils.getContext(), R.anim.refresh_rotate);
         animation.setInterpolator(new LinearInterpolator());
+        animation.setDuration(500);
         TextView textView = (TextView) myHolder.mFooterView.findViewById(R.id.tv_refresh_more);
         ImageView imageView = (ImageView) myHolder.mFooterView.findViewById(R.id.iv_refresh_more);
         imageView.startAnimation(animation);
