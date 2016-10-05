@@ -7,7 +7,7 @@
         android:drawable="@drawable/progress_bg">
     </item>
     <!-- progress -->
-    <item android:id="@android:id/progress"        
+    <item android:id="@android:id/progress"
     >
         <clip>
             <nine-patch android:src="@drawable/progress_primary" />
