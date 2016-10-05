@@ -60,6 +60,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     @Override
     protected void bindNormal(RecyclerView.ViewHolder holder,int position) {
         final ViewHolder myHolder = (ViewHolder) holder;
+        hideHeadAndFoot(myHolder);
         final RecommendContent.ResultBean resultBean = mBeanList.get(position-1);
         LinearLayoutCompat.LayoutParams params =
                 new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -72,7 +73,8 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
                 return resultBean.getType().equals("weblink") ? myHolder.mLayoutManager.getSpanCount() : 1;
             }
         });
-        //根据类型进行区分
+        List<RecommendContent.ResultBean.BodyBean> body = resultBean.getBody();
+        //根据类型进行区分渲染不同卡片
         switch (resultBean.getType()) {
             case RecommendConst.RECOMMEND:
                 initRecommendRegion(myHolder);
@@ -80,20 +82,27 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             case RecommendConst.LIVE:
                 initLiveRegion(myHolder, resultBean);
                 return;
+            case RecommendConst.BANGUMI_2:
+                initBangumiRegion(myHolder, resultBean);
+                return;
             default:
                 hideHeadAndFoot(myHolder);
                 break;
         }
         //因为有多个type，必须动态设置宽高
-
-        List<RecommendContent.ResultBean.BodyBean> body = resultBean.getBody();
         RecommendImageRecyclerAdapter adapter = new RecommendImageRecyclerAdapter(body);
         myHolder.mGroupImageRecycler.setAdapter(adapter);
 
     }
 
+    private void initBangumiRegion(ViewHolder myHolder, RecommendContent.ResultBean resultBean) {
+        RecommendBangumiRecyclerAdapter adapter = new RecommendBangumiRecyclerAdapter(resultBean.getBody());
+        myHolder.mGroupImageRecycler.setAdapter(adapter);
+        setHead(myHolder,R.layout.header_region);
+        setFoot(myHolder,R.layout.foot_bangumi_2);
+    }
+
     private void initLiveRegion(final ViewHolder myHolder, RecommendContent.ResultBean resultBean) {
-        hideHeadAndFoot(myHolder);
         View view = mInflater.inflate(R.layout.header_live, null);
         TextView tv = (TextView) view.findViewById(R.id.tv_head_live_middle);
         tv.setText(resultBean.getHead().getCount());

@@ -3,6 +3,7 @@ package com.example.castle.csite.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.fragment.FindFragment;
@@ -16,11 +17,13 @@ import com.example.castle.csite.util.UiUtils;
  * 首页viewpager适配器
  */
 public class HomeAdapter extends FragmentStatePagerAdapter {
+    private final FragmentManager mFragmentManager;
     private String[] mTitles;
 
     public HomeAdapter(FragmentManager fm) {
         super(fm);
-        mTitles = UiUtils.getArray(R.array.Home);
+        mTitles =  UiUtils.getArray(R.array.Home);
+        mFragmentManager = fm;
     }
 
     @Override
@@ -42,6 +45,13 @@ public class HomeAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mTitles.length;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        Fragment fragment = (Fragment) object;
+        mFragmentManager.beginTransaction()
+                .hide(fragment);
     }
 
     @Override

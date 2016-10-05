@@ -31,6 +31,7 @@
             android:layout_below="@id/group_desc_text"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/iv_tv_play"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_tv_play"

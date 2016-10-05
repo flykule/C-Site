@@ -52,6 +52,8 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.iv_tv_play)
+        ImageView mTvPlayImageView;
         @Bind(R.id.group_image_view)
         ImageView mGroupImageView;
         @Bind(R.id.group_desc_text)
