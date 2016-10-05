@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_refresh_more"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="7dp"
+        android:background="@android:color/white"
+        android:text="@string/btn_refresh_more"
+        android:textColor="@color/darkest"/>
+
+    <RelativeLayout
+        android:id="@+id/foot_refresh_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/iv_refresh_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/ic_category_more_refresh"
+            android:tint="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tv_refresh_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_toLeftOf="@id/iv_refresh_more"
+            android:text="@string/foot_hot"
+            android:textColor="@color/darkest"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/group_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/group_desc_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group_image_view"
+            android:textColor="@color/darkest"
+            android:maxLines="2"
+            android:minLines="2"
+            android:ellipsize="end"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/group_desc_text"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:id="@+id/tv_live_up"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:textSize="10sp"
+                android:layout_height="match_parent"
+                android:textColor="@color/gray"
+                android:text="这是Up主"/>
+
+            <com.example.castle.csite.view.DrawableCenterTextView
+                android:drawableLeft="@drawable/ic_watching"
+                android:layout_alignParentRight="true"
+                android:textSize="10sp"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:drawablePadding="3dp"
+                android:id="@+id/tv_live_watch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/gray"
+                android:text="这是观看人数"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
