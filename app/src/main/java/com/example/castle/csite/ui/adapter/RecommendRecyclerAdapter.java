@@ -14,10 +14,12 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendContent;
+import com.example.castle.csite.cons.RecommendConst;
 import com.example.castle.csite.listener.OnRecommendRefreshDataListener;
 import com.example.castle.csite.ui.base.BaseRecyclerAdapter;
 import com.example.castle.csite.util.UiUtils;
@@ -33,6 +35,7 @@ import butterknife.Bind;
 public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
 
     private final OnRecommendRefreshDataListener mListener;
+    private final Animation mAnimation;
     private List<RecommendContent.ResultBean> mBeanList;
     private LayoutInflater mInflater;
 
@@ -40,6 +43,9 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
                                     OnRecommendRefreshDataListener listener) {
         mBeanList = beanList;
         mListener = listener;
+        mAnimation = AnimationUtils.loadAnimation(UiUtils.getContext(), R.anim.refresh_rotate);
+        mAnimation.setInterpolator(new LinearInterpolator());
+        mAnimation.setDuration(500);
     }
 
     @NonNull
@@ -55,38 +61,58 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     protected void bindNormal(RecyclerView.ViewHolder holder,int position) {
         final ViewHolder myHolder = (ViewHolder) holder;
         final RecommendContent.ResultBean resultBean = mBeanList.get(position-1);
+        LinearLayoutCompat.LayoutParams params =
+                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+        myHolder.itemView.setLayoutParams(params);
+        myHolder.mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                //如果是第一个(添加HeaderView)   还有就是最后一个(FooterView)
+                return resultBean.getType().equals("weblink") ? myHolder.mLayoutManager.getSpanCount() : 1;
+            }
+        });
         //根据类型进行区分
         switch (resultBean.getType()) {
-            case "recommend":
+            case RecommendConst.RECOMMEND:
                 initRecommendRegion(myHolder);
                 break;
-            case "live":
-                hideHeadAndFoot(myHolder);
-                View view = mInflater.inflate(R.layout.header_live, null);
-                TextView tv = (TextView) view.findViewById(R.id.tv_head_live_middle);
-                tv.setText(resultBean.getHead().getCount());
-                tv.setTextColor(UiUtils.getColor(R.color.colorPrimary));
-                setHead(myHolder,view);
-                break;
+            case RecommendConst.LIVE:
+                initLiveRegion(myHolder, resultBean);
+                return;
             default:
                 hideHeadAndFoot(myHolder);
                 break;
         }
         //因为有多个type，必须动态设置宽高
-        LinearLayoutCompat.LayoutParams params =
-                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-        myHolder.itemView.setLayoutParams(params);
+
         List<RecommendContent.ResultBean.BodyBean> body = resultBean.getBody();
         RecommendImageRecyclerAdapter adapter = new RecommendImageRecyclerAdapter(body);
         myHolder.mGroupImageRecycler.setAdapter(adapter);
-        myHolder.mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(int position) {
-                    //如果是第一个(添加HeaderView)   还有就是最后一个(FooterView)
-                    return resultBean.getType().equals("weblink") ? myHolder.mLayoutManager.getSpanCount() : 1;
-                }
-            });
+
+    }
+
+    private void initLiveRegion(final ViewHolder myHolder, RecommendContent.ResultBean resultBean) {
+        hideHeadAndFoot(myHolder);
+        View view = mInflater.inflate(R.layout.header_live, null);
+        TextView tv = (TextView) view.findViewById(R.id.tv_head_live_middle);
+        tv.setText(resultBean.getHead().getCount());
+        tv.setTextColor(UiUtils.getColor(R.color.colorPrimary));
+        setHead(myHolder,view);
+        final RecommendLiveRegionAdapter liveRegionAdapter = new RecommendLiveRegionAdapter(resultBean.getBody());
+        myHolder.mGroupImageRecycler.setAdapter(liveRegionAdapter);
+        View footView = mInflater.inflate(R.layout.foot_refresh_more, null);
+        setFoot(myHolder,footView);
+        RelativeLayout layout = (RelativeLayout) footView.findViewById(R.id.foot_refresh_container);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView imageView = startRotate(myHolder);
+                TextView textView = (TextView) myHolder.mFooterView.findViewById(R.id.tv_refresh_more);
+                textView.setText("玩命加载中");
+                mListener.onRefreshRegion(textView,imageView,liveRegionAdapter,RecommendConst.LIVE);
+            }
+        });
     }
 
     private void hideHeadAndFoot(ViewHolder myHolder) {
@@ -111,6 +137,11 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
         View hotFoot = mInflater.inflate(layoutId, null);
         myHolder.mFooterView.addView(hotFoot);
     }
+    private void setFoot(ViewHolder myHolder,View  hotFoot) {
+        myHolder.mFooterView.removeAllViews();
+        myHolder.mFooterView.setVisibility(View.VISIBLE);
+        myHolder.mFooterView.addView(hotFoot);
+    }
 
     private void setHead(ViewHolder myHolder,int layoutId) {
         myHolder.mHeaderView.removeAllViews();
@@ -127,15 +158,19 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
 
     //推荐块刷新
     private void refreshHotRegion(ViewHolder myHolder) {
-        Animation animation = AnimationUtils.loadAnimation(UiUtils.getContext(), R.anim.refresh_rotate);
-        animation.setInterpolator(new LinearInterpolator());
-        animation.setDuration(500);
+
         TextView textView = (TextView) myHolder.mFooterView.findViewById(R.id.tv_refresh_more);
-        ImageView imageView = (ImageView) myHolder.mFooterView.findViewById(R.id.iv_refresh_more);
-        imageView.startAnimation(animation);
+        ImageView imageView = startRotate(myHolder);
         textView.setText("嘿咻嘿咻～");
         RecommendImageRecyclerAdapter adapter = ((RecommendImageRecyclerAdapter) myHolder.mGroupImageRecycler.getAdapter());
-        mListener.onRefreshRegion(textView, imageView, adapter);
+        mListener.onRefreshRegion(textView, imageView, adapter,RecommendConst.RECOMMEND);
+    }
+
+    @NonNull
+    private ImageView startRotate(ViewHolder myHolder) {
+        ImageView imageView = (ImageView) myHolder.mFooterView.findViewById(R.id.iv_refresh_more);
+        imageView.startAnimation(mAnimation);
+        return imageView;
     }
 
 
@@ -163,6 +198,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             mGroupImageRecycler.setLayoutManager(mLayoutManager);
             mGroupImageRecycler.addItemDecoration(new RecommendItemDecoration());
+
         }
     }
 

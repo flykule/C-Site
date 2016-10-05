@@ -148,6 +148,42 @@ public class RecommendContent {
             private int height;
             private String play;
             private String danmaku;
+            private String up;
+            private String name;
+            private String online;
+            private String area;
+
+
+            public String getArea() {
+                return area;
+            }
+
+            public void setArea(String area) {
+                this.area = area;
+            }
+
+            public String getUp() {
+                return up;
+            }
+
+            public void setUp(String up) {
+                this.up = up;
+            }
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getOnline() {
+                return online;
+            }
+
+            public void setOnline(String online) {
+                this.online = online;
+            }
 
             public String getTitle() {
                 return title;

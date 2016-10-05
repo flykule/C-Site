@@ -67,6 +67,8 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
             mGroupDescText = (TextView) itemView.findViewById(R.id.group_desc_text);
             mTvAnswerDanmaku = (TextView) itemView.findViewById(R.id.tv_answer_danmaku);
             mTvAnswerWatch = (TextView) itemView.findViewById(R.id.tv_answer_watch);
+            mTvAnswerDanmaku.setTextColor(UiUtils.getColor(R.color.gray));
+            mTvAnswerWatch.setTextColor(UiUtils.getColor(R.color.gray));
         }
     }
 

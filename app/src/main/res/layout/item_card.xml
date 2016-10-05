@@ -41,12 +41,14 @@
                 android:layout_width="0dp"
                 android:layout_marginLeft="3dp"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="10sp"
                 android:layout_weight="1"
                 android:drawingCacheQuality="low"
                 android:drawablePadding="3dp"
-                android:textColor="@color/darkest"/>
+                android:textColor="@color/gray"/>
 
-            <TextView
+            <com.example.castle.csite.view.DrawableCenterTextView
                 android:id="@+id/tv_answer_watch"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -54,7 +56,9 @@
                 android:drawablePadding="3dp"
                 android:drawableLeft="@drawable/ic_answer_danmaku"
                 android:drawingCacheQuality="low"
-                android:textColor="@color/darkest"/>
+                android:gravity="center_vertical"
+                android:textSize="10sp"
+                android:textColor="@color/gray"/>
         </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
