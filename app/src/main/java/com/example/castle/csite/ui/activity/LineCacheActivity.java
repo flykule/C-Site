@@ -1,7 +1,6 @@
 package com.example.castle.csite.ui.activity;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
@@ -22,7 +21,7 @@ import com.example.castle.csite.listener.ICacheSortPopListener;
 import com.example.castle.csite.ui.base.BaseActivity;
 import com.example.castle.csite.ui.pop.CacheSortPop;
 import com.example.castle.csite.util.FileUtils;
-import com.example.castle.csite.util.UiUtils;
+import com.example.castle.csite.util.LogUtils;
 import com.example.castle.csite.view.BindLayout;
 
 import java.io.File;
@@ -78,14 +77,20 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
         mProgressBar.setMax(Integer.parseInt(String.valueOf(totalMeme)));
         mProgressBar.setProgress(Integer.parseInt(String.valueOf(avalibMeme)));*/
 
-        mProgressBar.setMax(Integer.parseInt(String.valueOf((int)getSDTotalSize())));
-        mProgressBar.setProgress(Integer.parseInt(String.valueOf( (int)((getSDTotalSize())-getSDAvailableSize()))));
 
-        Drawable drawable = UiUtils.getDrawable(R.drawable.custom_progressbar);
-        mProgressBar.setProgressDrawable(drawable);
-        mProgressBar.setMax(100);
-        mProgressBar.setProgress(50);
-        mProgressBar.invalidate();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                long totalSize = getSDTotalSize();
+                long used = totalSize - getSDAvailableSize();
+                double v = (double) used / totalSize;
+                mProgressBar.setMax(100);
+                mProgressBar.setProgress((int)Math.floor(v * 100));
+            }
+        });
+
+
+        //mProgressBar.invalidate();
         //刷新
         mRefresh_iv = (ImageView) findViewById(R.id.refresh_iv);
         mRefresh_iv.setOnClickListener(this);

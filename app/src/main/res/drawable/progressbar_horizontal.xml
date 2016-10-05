@@ -3,8 +3,10 @@
 
     <!-- background -->
     <item
-        android:id="@android:id/background"
-        android:drawable="@drawable/progress_bg">
+        android:id="@android:id/background">
+        <clip>
+            <nine-patch android:src="@drawable/progress_bg" />
+        </clip>
     </item>
     <!-- progress -->
     <item android:id="@android:id/progress"
