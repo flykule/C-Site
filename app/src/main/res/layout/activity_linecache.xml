@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+    >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:theme="@style/MyToolbarTheme"
+        >
+            <LinearLayout
+                android:id="@+id/ll_xiala"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+            >
+                <TextView
+                    android:id="@+id/indicator_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start"
+                    android:text="按标题"
+                    android:textColor="@drawable/choose_cache_indicator_tv_bg"
+                    android:textSize="20sp"
+                />
+                <ImageView
+                    android:id="@+id/iv_xiala"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:src="@drawable/abc_spinner_mtrl_am_alpha"
+                />
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+          <ImageView
+                android:id="@+id/image_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/img_tips_error_no_downloads"
+                android:layout_centerInParent="true"
+            />
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerHorizontal="true"
+                      android:text="没有找到你的缓存哟"
+                      android:textColor="#bbb4b4"
+                      android:layout_below="@id/image_iv"
+                      android:layout_marginTop="15dp"
+            />
+      
+
+
+        <!-- android:progressDrawable="@drawable/progressbar_horizontal"-->
+        <RelativeLayout
+            android:id="@+id/buttom_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+        >
+            <TextView
+                android:id="@+id/allstart_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="全部开始"
+                android:textColor="#121212"
+                android:textSize="15sp"
+            />
+            <View
+                android:id="@+id/line"
+                android:layout_width="0.5dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/allstart_tv"
+                android:background="#8888"/>
+
+            <TextView
+                android:id="@+id/edit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/line"
+                android:text="编辑"
+                android:textColor="#121212"
+                android:textSize="15sp"
+            />
+            <ImageView
+                android:id="@+id/refresh_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:src="@drawable/ucrop_ic_rotate"
+            />
+
+        </RelativeLayout>
+        <FrameLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_above="@+id/buttom_rl"
+        >
+            <ProgressBar
+                android:id="@+id/pb_store"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:max="100"
+                android:progress="99"
+                android:progressDrawable="@drawable/progressbar_horizontal"
+                android:minHeight="50dp"
+                android:maxHeight="50dp"
+            />
+            <TextView
+                android:id="@+id/showSd_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="10G可用"
+            />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+

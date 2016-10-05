@@ -1,6 +1,8 @@
 package com.example.castle.csite.util;
 
 import android.os.Environment;
+import android.os.StatFs;
+import android.text.format.Formatter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,6 +31,7 @@ public class FileUtils {
 
     /**
      * 递归删除一个文件，如果是目录删除所有子文件及目录
+     *
      * @param file 要删除的文件
      * @return 是否删除成功
      */
@@ -53,6 +56,7 @@ public class FileUtils {
 
     /**
      * 根据后缀判断文件是否是一张合法的图片
+     *
      * @param filename 文件名
      * @return 是否是指定格式的有效图片
      */
@@ -62,6 +66,7 @@ public class FileUtils {
 
     /**
      * 根据后缀判断文件是否是zip文件
+     *
      * @param filename 文件名
      * @return 是否是zip格式的文件
      */
@@ -71,6 +76,7 @@ public class FileUtils {
 
     /**
      * 根据后缀判断文件是否是rar文件
+     *
      * @param filename 文件名
      * @return 是否是rar格式的文件
      */
@@ -80,6 +86,7 @@ public class FileUtils {
 
     /**
      * 根据后缀判断文件是否是cbt文件
+     *
      * @param filename 文件名
      * @return 是否是cbt格式的文件
      */
@@ -90,14 +97,17 @@ public class FileUtils {
 
     /**
      * 根据后缀判断文件是否是cb7或者7z文件
+     *
      * @param filename 文件名
      * @return 是否是cb7或者7z格式的文件
      */
     public static boolean isSevenZ(String filename) {
         return filename.toLowerCase().matches(".*\\.(cb7|7z)$");
     }
+
     /**
      * 根据后缀判断文件是否是压缩文件，如果文件名后缀为zip,rar,cbt,7z,cb7,cbr,cbz其中之一则为压缩文件
+     *
      * @param filename 文件名
      * @return 是否是压缩文件
      */
@@ -125,13 +135,16 @@ public class FileUtils {
             output.close();
         }
     }
+
     public static final String ROOT_DIR = "Android/data/"
             + UiUtils.getPackageName();
     public static final String DOWNLOAD_DIR = "download";
     public static final String CACHE_DIR = "cache";
     public static final String ICON_DIR = "icon";
 
-    /** 判断SD卡是否挂载 */
+    /**
+     * 判断SD卡是否挂载
+     */
     public static boolean isSDCardAvailable() {
         if (Environment.MEDIA_MOUNTED.equals(Environment
                 .getExternalStorageState())) {
@@ -141,22 +154,30 @@ public class FileUtils {
         }
     }
 
-    /** 获取下载目录 */
+    /**
+     * 获取下载目录
+     */
     public static String getDownloadDir() {
         return getDir(DOWNLOAD_DIR);
     }
 
-    /** 获取缓存目录 */
+    /**
+     * 获取缓存目录
+     */
     public static String getCacheDir() {
         return getDir(CACHE_DIR);
     }
 
-    /** 获取icon目录 */
+    /**
+     * 获取icon目录
+     */
     public static String getIconDir() {
         return getDir(ICON_DIR);
     }
 
-    /** 获取应用目录，当SD卡存在时，获取SD卡上的目录，当SD卡不存在时，获取应用的cache目录 */
+    /**
+     * 获取应用目录，当SD卡存在时，获取SD卡上的目录，当SD卡不存在时，获取应用的cache目录
+     */
     public static String getDir(String name) {
         StringBuilder sb = new StringBuilder();
         if (isSDCardAvailable()) {
@@ -174,7 +195,9 @@ public class FileUtils {
         }
     }
 
-    /** 获取SD下的应用目录 */
+    /**
+     * 获取SD下的应用目录
+     */
     public static String getExternalStoragePath() {
         StringBuilder sb = new StringBuilder();
         sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
@@ -184,7 +207,9 @@ public class FileUtils {
         return sb.toString();
     }
 
-    /** 获取应用的cache目录 */
+    /**
+     * 获取应用的cache目录
+     */
     public static String getCachePath() {
         File f = UiUtils.getContext().getCacheDir();
         if (null == f) {
@@ -194,7 +219,9 @@ public class FileUtils {
         }
     }
 
-    /** 创建文件夹 */
+    /**
+     * 创建文件夹
+     */
     public static boolean createDirs(String dirPath) {
         File file = new File(dirPath);
         if (!file.exists() || !file.isDirectory()) {
@@ -203,7 +230,9 @@ public class FileUtils {
         return true;
     }
 
-    /** 复制文件，可以选择是否删除源文件 */
+    /**
+     * 复制文件，可以选择是否删除源文件
+     */
     public static boolean copyFile(String srcPath, String destPath,
                                    boolean deleteSrc) {
         File srcFile = new File(srcPath);
@@ -211,7 +240,9 @@ public class FileUtils {
         return copyFile(srcFile, destFile, deleteSrc);
     }
 
-    /** 复制文件，可以选择是否删除源文件 */
+    /**
+     * 复制文件，可以选择是否删除源文件
+     */
     public static boolean copyFile(File srcFile, File destFile,
                                    boolean deleteSrc) {
         if (!srcFile.exists() || !srcFile.isFile()) {
@@ -241,7 +272,9 @@ public class FileUtils {
         return true;
     }
 
-    /** 判断文件是否可写 */
+    /**
+     * 判断文件是否可写
+     */
     public static boolean isWriteable(String path) {
         try {
             if (StringUtil.nonNull(path)) {
@@ -255,7 +288,9 @@ public class FileUtils {
         }
     }
 
-    /** 修改文件的权限,例如"777"等 */
+    /**
+     * 修改文件的权限,例如"777"等
+     */
     public static void chmod(String path, String mode) {
         try {
             String command = "chmod " + mode + " " + path;
@@ -269,12 +304,9 @@ public class FileUtils {
     /**
      * 把数据写入文件
      *
-     * @param is
-     *            数据流
-     * @param path
-     *            文件路径
-     * @param recreate
-     *            如果文件存在，是否需要删除重建
+     * @param is       数据流
+     * @param path     文件路径
+     * @param recreate 如果文件存在，是否需要删除重建
      * @return 是否写入成功
      */
     public static boolean writeFile(InputStream is, String path,
@@ -309,12 +341,9 @@ public class FileUtils {
     /**
      * 把字符串数据写入文件
      *
-     * @param content
-     *            需要写入的字符串
-     * @param path
-     *            文件路径名称
-     * @param append
-     *            是否以添加的模式写入
+     * @param content 需要写入的字符串
+     * @param path    文件路径名称
+     * @param append  是否以添加的模式写入
      * @return 是否写入成功
      */
     public static boolean writeFile(byte[] content, String path, boolean append) {
@@ -347,12 +376,9 @@ public class FileUtils {
     /**
      * 把字符串数据写入文件
      *
-     * @param content
-     *            需要写入的字符串
-     * @param path
-     *            文件路径名称
-     * @param append
-     *            是否以添加的模式写入
+     * @param content 需要写入的字符串
+     * @param path    文件路径名称
+     * @param append  是否以添加的模式写入
      * @return 是否写入成功
      */
     public static boolean writeFile(String content, String path, boolean append) {
@@ -362,14 +388,10 @@ public class FileUtils {
     /**
      * 把键值对写入文件
      *
-     * @param filePath
-     *            文件路径
-     * @param key
-     *            键
-     * @param value
-     *            值
-     * @param comment
-     *            该键值对的注释
+     * @param filePath 文件路径
+     * @param key      键
+     * @param value    值
+     * @param comment  该键值对的注释
      */
     public static void writeProperties(String filePath, String key,
                                        String value, String comment) {
@@ -397,7 +419,9 @@ public class FileUtils {
         }
     }
 
-    /** 根据值读取 */
+    /**
+     * 根据值读取
+     */
     public static String readProperties(String filePath, String key,
                                         String defaultValue) {
         if (StringUtil.nonNull(key) || StringUtil.nonNull(filePath)) {
@@ -422,7 +446,9 @@ public class FileUtils {
         return value;
     }
 
-    /** 把字符串键值对的map写入文件 */
+    /**
+     * 把字符串键值对的map写入文件
+     */
     public static void writeMap(String filePath, Map<String, String> map,
                                 boolean append, String comment) {
         if (map == null || map.size() == 0 || StringUtil.nonNull(filePath)) {
@@ -451,8 +477,10 @@ public class FileUtils {
         }
     }
 
-    /** 把字符串键值对的文件读入map */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    /**
+     * 把字符串键值对的文件读入map
+     */
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static Map<String, String> readMap(String filePath,
                                               String defaultValue) {
         if (StringUtil.nonNull(filePath)) {
@@ -477,7 +505,9 @@ public class FileUtils {
         return map;
     }
 
-    /** 改名 */
+    /**
+     * 改名
+     */
     public static boolean copy(String src, String des, boolean delete) {
         File file = new File(src);
         if (!file.exists()) {
@@ -506,5 +536,31 @@ public class FileUtils {
             file.delete();
         }
         return true;
+    }
+
+    /**
+     * 获得SD卡总大小
+     *
+     * @return
+     */
+    public static String getSDTotalSize() {
+        File path = Environment.getExternalStorageDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long totalBlocks = stat.getBlockCount();
+        return Formatter.formatFileSize(UiUtils.getContext(), blockSize * totalBlocks);
+    }
+
+    /**
+     * 获得sd卡剩余容量，即可用大小
+     *
+     * @return
+     */
+    public static String getSDAvailableSize() {
+        File path = Environment.getExternalStorageDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long availableBlocks = stat.getAvailableBlocks();
+        return Formatter.formatFileSize(UiUtils.getContext(), blockSize * availableBlocks);
     }
 }

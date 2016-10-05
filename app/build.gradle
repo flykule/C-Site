@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         applicationId "com.example.castle.csite"
@@ -13,14 +13,15 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             signingConfig signingConfigs.debug
-            proguardFiles 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            
         }
     }
     signingConfigs {
@@ -57,7 +58,7 @@ dependencies {
     compile app.retrofitRxAdapter
     compile app.butterKnife
     testCompile appTest.junit
-    compile 'com.alibaba:fastjson:1.2.9'
+    compile 'com.alibaba:fastjson:1.2.17'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -68,5 +69,6 @@ dependencies {
     compile files('libs/SocialSDK_WeiXin_2.jar')
     compile files('libs/umeng_social_apiv6.0.0.jar')
     compile files('libs/umeng_social_netv6.0.0.jar')
-    compile files('libs/umeng_social_viewv6.0.0.jar')
+    compile files('libs/umeng_social_viewv6.0.0.jar')   
+    
 }

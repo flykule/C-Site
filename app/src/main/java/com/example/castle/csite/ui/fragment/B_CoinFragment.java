@@ -13,7 +13,7 @@ import com.example.castle.csite.R;
 /**
  * @author 吴志强
  * @time 2016/8/13  20:21
- * @desc ${TODD}
+ * @desc 冲值页面
  */
 public class B_CoinFragment extends Fragment {
 	@Nullable

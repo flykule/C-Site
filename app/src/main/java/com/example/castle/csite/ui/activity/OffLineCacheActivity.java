@@ -37,7 +37,7 @@ public class OffLineCacheActivity extends BaseActivity
         mIndicatorTv = (TextView)findViewById(R.id.indicator_tv);
         mIndicatorTv.setOnClickListener(this);
 
-        mMenTv = (TextView)findViewById(R.id.men_tv);
+        mMenTv = (TextView)findViewById(R.id.pb_store);
         long avalibMeme = SystemInfoUtils.getAvalibMeme(this);
         long totalMeme = SystemInfoUtils.getTotalMeme(this);
         mMenTv.setText("总/剩余内存:"+ Formatter.formatFileSize(this,totalMeme)+"/"+Formatter.formatFileSize(this,avalibMeme));

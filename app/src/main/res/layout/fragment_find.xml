@@ -29,6 +29,7 @@
                       android:layout_marginLeft="10dp"
                       android:text="大家都在搜"
                       android:textSize="20sp"
+                      android:textColor="@color/circle_red"
             />
 
         </LinearLayout>

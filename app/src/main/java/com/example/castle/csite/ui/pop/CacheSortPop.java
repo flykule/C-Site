@@ -9,13 +9,14 @@ import android.widget.PopupWindow;
 import com.example.castle.csite.R;
 import com.example.castle.csite.listener.ICacheSortPopListener;
 import com.example.castle.csite.util.ToastUtil;
+import com.example.castle.csite.util.UiUtils;
 
 /**
  * @author liqin
  * @time 2016/9/22  19:21
  * @desc ${TODD}
  */
-public class CacheSortPop extends BasePopwindow implements View.OnClickListener{
+public class CacheSortPop extends BasePopwindow implements View.OnClickListener {
 
     private ICacheSortPopListener mListener;
 
@@ -24,19 +25,20 @@ public class CacheSortPop extends BasePopwindow implements View.OnClickListener{
     }
 
     public void setOnSortChangeListener(ICacheSortPopListener listener) {
-        mListener=listener;
+        mListener = listener;
     }
 
     @Override
     protected void initViews(Context c) {
         //contentView 弹出框的显示内容
         // width, height 弹出框的大小
-        View contentView = LayoutInflater.from(c).inflate(R.layout.cahe_sort_pop_layout,null);
+        View contentView = LayoutInflater.from(c).inflate(R.layout.cahe_sort_pop_layout, null);
+       
         contentView.findViewById(R.id.title_sort).setOnClickListener(this);
         contentView.findViewById(R.id.time_sort).setOnClickListener(this);
         contentView.findViewById(R.id.episode_sort).setOnClickListener(this);
 
-        mPopupWindow =new PopupWindow(contentView,-2,-2);
+        mPopupWindow = new PopupWindow(contentView, UiUtils.dip2px(100), -2);
 
         //1.让mPopupWindow内部的控件获取焦点
         mPopupWindow.setFocusable(true);
@@ -50,7 +52,7 @@ public class CacheSortPop extends BasePopwindow implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(mListener!=null) {
+        if (mListener != null) {
             switch (v.getId()) {
                 case R.id.title_sort:
                     mListener.onSortChaneged(ICacheSortPopListener.TITLE_SORT);

@@ -73,7 +73,7 @@
 
 
     <TextView
-            android:id="@+id/men_tv"
+            android:id="@+id/pb_store"
             android:layout_width="match_parent"
             android:textSize="15sp"
             android:background="#a19e9e"

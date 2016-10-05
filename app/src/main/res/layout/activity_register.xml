@@ -49,7 +49,7 @@
                 android:drawableLeft="@drawable/ic_login_username_default"
                 android:drawablePadding="15dp"
                 android:hint="你的手机号/邮箱"
-                />
+            />
         </RelativeLayout>
 
     </LinearLayout>
@@ -72,7 +72,8 @@
                 android:drawableLeft="@drawable/ic_login_password_default"
                 android:drawablePadding="15dp"
                 android:hint="请输入密码"
-                />
+                android:password="true"
+            />
         </RelativeLayout>
     </LinearLayout>
 
@@ -94,7 +95,8 @@
                 android:drawableLeft="@drawable/ic_login_password_default"
                 android:drawablePadding="15dp"
                 android:hint="请确认密码"
-                />
+                android:password="true"
+            />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout

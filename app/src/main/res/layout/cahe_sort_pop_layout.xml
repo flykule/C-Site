@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/pop_ll"
-              android:layout_width="100dp"
-              android:layout_marginLeft="50dp"
+              android:layout_width="200dp"
               android:layout_height="wrap_content"
-              android:background="#fbfafa"
-              android:orientation="vertical" >
+              android:layout_marginLeft="30dp"
+              android:background="#f9f8f8"
+              android:orientation="vertical">
 
     <TextView
         android:id="@+id/title_sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:clickable="true"
         android:layout_marginTop="5dp"
+
+        android:clickable="true"
         android:padding="8dp"
         android:text="按标题"
-        android:textSize="18sp" />
-
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+    />
 
 
     <TextView
         android:id="@+id/time_sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:clickable="true"
         android:layout_marginTop="5dp"
+
+        android:clickable="true"
         android:padding="8dp"
         android:text="按时间"
-        android:textSize="18sp" />
-
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+    />
 
 
     <TextView
         android:id="@+id/episode_sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:clickable="true"
         android:layout_marginTop="5dp"
+
+        android:clickable="true"
         android:padding="8dp"
         android:text="按剧集"
-        android:textSize="18sp" />
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+    />
 
 
 </LinearLayout>
