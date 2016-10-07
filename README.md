@@ -1,8 +1,20 @@
 #说明
+#当前进度
+++++++框架完成
+++++++离线缓存页面完成
+++++++收藏页面完成
+推荐页面开发中，70%
 #Snapshot
-
+![](http://obip31jcs.bkt.clouddn.com/16-10-7/38394529.jpg)
+![](http://obip31jcs.bkt.clouddn.com/16-10-7/28532568.jpg)
+![](http://obip31jcs.bkt.clouddn.com/16-10-7/1824138.jpg)
+![](http://obip31jcs.bkt.clouddn.com/16-10-7/64048654.jpg)
 ##介绍：
 这是一个与小伙伴共同完成的仿B站应用，目前还在开发中
+##开发环境：
+
+Ubuntu16.0.4+Android Studio+Vim
+
 ##使用到的第三方库与技术：
 * RxJava & Retrofit & OkHttp:网络框架，读取和缓存数据
 * Butterknife: view注入框架，注入view与各种监听事件
@@ -17,4 +29,3 @@
 **感谢这些库的作者！Thankss these libary creator!**
 ##参考项目:
 ###项目中参考的开源项目
-* [bubble](https://github.com/nkanaev/bubble)

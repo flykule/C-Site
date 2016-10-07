@@ -275,5 +275,7 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         return super.onCreateOptionsMenu(menu);
     }
 
-
+    public AppBarLayout getAppbarLayout() {
+        return mAppbarLayout;
+    }
 }

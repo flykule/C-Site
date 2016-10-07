@@ -26,6 +26,7 @@ import com.example.castle.csite.cons.RecommendConst;
 import com.example.castle.csite.listener.HidingScrollListener;
 import com.example.castle.csite.listener.OnRecommendRefreshDataListener;
 import com.example.castle.csite.network.api.ApiService;
+import com.example.castle.csite.ui.activity.MainActivity;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
 import com.example.castle.csite.ui.adapter.RecommendImageRecyclerAdapter;
 import com.example.castle.csite.ui.adapter.RecommendLiveRegionAdapter;
@@ -101,17 +102,16 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     }
 
     private void initRecyclerScroll() {
-        mAppbarLayout = (AppBarLayout) getActivity().findViewById(R.id.appbar_layout);
+        MainActivity activity = (MainActivity) getActivity();
+        mAppbarLayout = activity.getAppbarLayout();
         mRecommendRecyclerView.addOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
-                LogUtils.d("出现中");
                 mAppbarLayout.setExpanded(false,true);
             }
 
             @Override
             public void onShow() {
-                LogUtils.d("隐藏中");
                 mAppbarLayout.setExpanded(true,true);
             }
         });
@@ -191,6 +191,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         ButterKnife.unbind(this);
     }
 
+    //块刷新回调，在这里根据块类型刷新数据和ui
     @Override
     public void onRefreshRegion(final TextView tv, final ImageView iv,
                                 final RecyclerView.Adapter adapter,String regionType) {
