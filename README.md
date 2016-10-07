@@ -5,10 +5,11 @@
 ++++++收藏页面完成
 推荐页面开发中，70%
 #Snapshot
-![](http://obip31jcs.bkt.clouddn.com/16-10-7/38394529.jpg)
-![](http://obip31jcs.bkt.clouddn.com/16-10-7/28532568.jpg)
-![](http://obip31jcs.bkt.clouddn.com/16-10-7/1824138.jpg)
-![](http://obip31jcs.bkt.clouddn.com/16-10-7/64048654.jpg)
+<figure class="third">
+    <img src="http://obip31jcs.bkt.clouddn.com/16-10-7/59655672.jpg">
+    <img src="http://obip31jcs.bkt.clouddn.com/16-10-7/15048024.jpg">
+    <img src="http://obip31jcs.bkt.clouddn.com/16-10-7/48181534.jpg">
+</figure>
 ##介绍：
 这是一个与小伙伴共同完成的仿B站应用，目前还在开发中
 ##开发环境：
