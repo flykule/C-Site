@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 import com.example.castle.csite.R;
 import com.example.castle.csite.ui.base.BaseActivity;
@@ -46,11 +48,14 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
     NavigationView mNavigationView;
 
     DrawerLayout mDrawerLayout;
+
+    AppBarLayout mAppbarLayout;
     //记录当前侧滑item
     private int mCurrentNavItem;
     //侧滑栏切换按钮
     private ActionBarDrawerToggle mDrawerToggle;
     private FragmentManager mFragmentManager;
+    private ScrollView mScrollView;
 
 
     @Override
@@ -60,8 +65,8 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         //初始化fragment manager
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this);
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mAppbarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
         mContentFrame = (FrameLayout) findViewById(R.id.content_frame);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.getChildAt(0).setVerticalScrollBarEnabled(false);
@@ -98,7 +103,7 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
             mCurrentNavItem = R.id.drawer_menu_library;*/
         } else {
             //强制更新指示
-            setFragment(new HomeFragment());
+            //setFragment(new HomeFragment());
             onBackStackChanged();
             mCurrentNavItem = savedInstanceState.getInt(STATE_CURRENT_MENU_ITEM);
         }
@@ -137,7 +142,7 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
                     case R.id.drawer_menu_theme:
                         gotoTarget(MyThemeActivity.class);
                         break;
-					
+
                     /*case R.id.drawer_menu_about:
                         break;
                     case R.id.drawer_menu_browser:

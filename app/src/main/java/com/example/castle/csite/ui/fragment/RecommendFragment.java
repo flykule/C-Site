@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.bean.RecommendLiveRegion;
 import com.example.castle.csite.bean.RecommendRegion;
 import com.example.castle.csite.cons.RecommendConst;
+import com.example.castle.csite.listener.HidingScrollListener;
 import com.example.castle.csite.listener.OnRecommendRefreshDataListener;
 import com.example.castle.csite.network.api.ApiService;
 import com.example.castle.csite.ui.adapter.BannerPagerAdapter;
@@ -64,6 +66,7 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
     private RecommendRecyclerAdapter mAdapter;
     private RecommendRegionInteractor mRecommendRegionInteractor;
     private RecommendLiveRegionInteractor mRecommendLiveRegionInteractor;
+    private AppBarLayout mAppbarLayout;
 
     /**
      * 在这里得到banner
@@ -92,9 +95,28 @@ public class RecommendFragment extends BaseFragment implements SwipeRefreshLayou
         mBanner.setLayoutParams(params);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeColors(UiUtils.getColor(R.color.colorPrimary));
-
+        //因为原声的动态隐藏不够敏感，在需要的地方再注册一个touchLister动态控制toolbar
+        initRecyclerScroll();
         return view;
     }
+
+    private void initRecyclerScroll() {
+        mAppbarLayout = (AppBarLayout) getActivity().findViewById(R.id.appbar_layout);
+        mRecommendRecyclerView.addOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+                LogUtils.d("出现中");
+                mAppbarLayout.setExpanded(false,true);
+            }
+
+            @Override
+            public void onShow() {
+                LogUtils.d("隐藏中");
+                mAppbarLayout.setExpanded(true,true);
+            }
+        });
+    }
+
     /**
      * banner数据已经拿到，在这里初始化
      */
