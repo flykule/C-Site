@@ -80,7 +80,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
             mToolbar.setElevation(8f);
         }
 
-
         if (getSupportActionBar() != null) {
             //回退键
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,6 +98,7 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
             mCurrentNavItem = R.id.drawer_menu_library;*/
         } else {
             //强制更新指示
+            setFragment(new HomeFragment());
             onBackStackChanged();
             mCurrentNavItem = savedInstanceState.getInt(STATE_CURRENT_MENU_ITEM);
         }

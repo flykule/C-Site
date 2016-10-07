@@ -19,16 +19,21 @@ public class HomeFragment extends Fragment{
     TabLayout mTabLayout;
 
     ViewPager mViewPager;
-
+    //保存之前创建的view，用于防止重复调用出现空白
+    View mView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mycollect, container, false);
-        mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        mViewPager.setAdapter(new HomeAdapter(getFragmentManager()));
-        mTabLayout.setupWithViewPager(mViewPager);
-        return view;
+        if (mView == null) {
+            mView = inflater.inflate(R.layout.fragment_mycollect, container, false);
+            mViewPager = (ViewPager) mView.findViewById(R.id.view_pager);
+            mTabLayout = (TabLayout) mView.findViewById(R.id.tab_layout);
+            mViewPager.setAdapter(new HomeAdapter(getFragmentManager()));
+            mTabLayout.setupWithViewPager(mViewPager);
+        } else {
+            container.removeAllViews();
+        }
+        return mView;
     }
 
 

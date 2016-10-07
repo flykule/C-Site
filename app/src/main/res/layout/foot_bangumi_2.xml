@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/iv_bangumi_timeline"
-        android:layout_marginRight="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="17dp"
         android:background="@drawable/bangumi_timeline_background"
         android:src="@drawable/bangumi_timeline_text"
         />
@@ -17,8 +18,9 @@
         android:layout_toRightOf="@id/iv_bangumi_timeline"
         android:layout_alignBottom="@id/iv_bangumi_timeline"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:background="@drawable/bangumi_index_background"
+        android:layout_marginRight="7dp"
         android:src="@drawable/bangumi_index_text"
         android:layout_alignParentTop="true"/>
 
