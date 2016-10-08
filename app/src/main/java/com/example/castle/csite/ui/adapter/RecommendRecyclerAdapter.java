@@ -3,7 +3,6 @@ package com.example.castle.csite.ui.adapter;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,6 +22,7 @@ import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.cons.RecommendConst;
 import com.example.castle.csite.listener.OnRecommendRefreshDataListener;
 import com.example.castle.csite.ui.base.BaseRecyclerAdapter;
+import com.example.castle.csite.util.ImageLoader;
 import com.example.castle.csite.util.UiUtils;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     private List<RecommendContent.ResultBean> mBeanList;
     private LayoutInflater mInflater;
 
+
     public RecommendRecyclerAdapter(List<RecommendContent.ResultBean> beanList,
                                     OnRecommendRefreshDataListener listener) {
         mBeanList = beanList;
@@ -53,6 +55,7 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
     protected RecyclerView.ViewHolder getNormalViewHolder(ViewGroup parent) {
         mInflater = LayoutInflater.from(parent.getContext());
         View view = mInflater.inflate(R.layout.item_recommend_content, parent, false);
+
         view.setMinimumHeight(parent.getMeasuredHeight()/4);
         return new ViewHolder(view);
     }
@@ -62,10 +65,6 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
         final ViewHolder myHolder = (ViewHolder) holder;
         hideHeadAndFoot(myHolder);
         final RecommendContent.ResultBean resultBean = mBeanList.get(position-1);
-        LinearLayoutCompat.LayoutParams params =
-                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-        myHolder.itemView.setLayoutParams(params);
         myHolder.mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -85,6 +84,15 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
             case RecommendConst.BANGUMI_2:
                 initBangumiRegion(myHolder, resultBean);
                 return;
+            case RecommendConst.REGION:
+                initRegion(myHolder,resultBean.getHead().getTitle());
+                break;
+            case RecommendConst.WEBLINK:
+                setHead(myHolder,R.layout.header_region_weblink);
+                break;
+            case RecommendConst.ACTIVITY:
+                setRegionHeadAndFoot(myHolder,resultBean.getHead().getTitle(),R.drawable.ic_header_activity_center);
+                break;
             default:
                 hideHeadAndFoot(myHolder);
                 break;
@@ -93,6 +101,71 @@ public class RecommendRecyclerAdapter extends BaseRecyclerAdapter {
         RecommendImageRecyclerAdapter adapter = new RecommendImageRecyclerAdapter(body);
         myHolder.mGroupImageRecycler.setAdapter(adapter);
 
+    }
+
+    //Region类型的分区通用初始化，根据分区标题而变化并改变文字和图标
+    private void initRegion(ViewHolder myHolder, String title) {
+        switch (title) {
+            case RecommendConst.TITLE_ANIMATIOn:
+                setRegionHeadAndFoot(myHolder, title,R.mipmap.ic_category_t1);
+                break;
+            case RecommendConst.TITLE_MUSIC:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t3);
+                break;
+            case RecommendConst.TITLE_DANCE:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t129);
+                break;
+            case RecommendConst.TITLE_GAME:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t4);
+                break;
+            case RecommendConst.TITLE_GUI:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t119);
+                break;
+            case RecommendConst.TITLE_TECH:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t36);
+                break;
+            case RecommendConst.TITLE_LIFE:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t160);
+                break;
+            case RecommendConst.TITLE_FASHION:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t155);
+                break;
+            case RecommendConst.TITLE_AD:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t165);
+                break;
+            case RecommendConst.TITLE_FUN:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t5);
+                break;
+            case RecommendConst.TITLE_TVSHOW:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t11);
+                break;
+            case RecommendConst.TITLE_MOVIE:
+                setRegionHeadAndFoot(myHolder,title,R.mipmap.ic_category_t23);
+                break;
+
+
+        }
+    }
+
+    private void setRegionHeadAndFoot(ViewHolder myHolder, String title,int leftDrawable) {
+        setHead(myHolder,title,leftDrawable);
+        View foot = mInflater.inflate(R.layout.foot_refresh_more, null);
+        setFoot(myHolder,foot,title);
+    }
+
+    private void setHead(ViewHolder myHolder, String title, int leftDrawable) {
+        View head = mInflater.inflate(R.layout.header_region_anime, null);
+        TextView textView = (TextView) head.findViewById(R.id.tv_region_title);
+        textView.setText(title);
+        ImageView imageView = (ImageView) head.findViewById(R.id.iv_region);
+        ImageLoader.load(UiUtils.getContext(),leftDrawable,imageView);
+        setHead(myHolder,head);
+    }
+
+    private void setFoot(ViewHolder myHolder, View regionFoot, String title) {
+        Button button = (Button) regionFoot.findViewById(R.id.btn_refresh_more);
+        button.setText("更多"+title.substring(0,title.length()-1));
+        setFoot(myHolder,regionFoot);
     }
 
     private void initBangumiRegion(ViewHolder myHolder, RecommendContent.ResultBean resultBean) {

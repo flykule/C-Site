@@ -20,7 +20,7 @@ public class ImageLoader {
     public static void load(Context context, @DrawableRes int imageRes, ImageView view) {
         Glide.with(context).
                 load(imageRes)
-                .placeholder(R.drawable.load_failed)
+                .placeholder(R.drawable.bili_default_image_tv)
                 .into(view);
     }
 

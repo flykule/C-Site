@@ -1,9 +1,13 @@
 #说明
 #当前进度
 ++++++框架完成
+
 ++++++离线缓存页面完成
+
 ++++++收藏页面完成
-推荐页面开发中，70%
+
+推荐页面开发中，UI部分完成90%
+
 #Snapshot
 <figure class="fourth">
     <a href="http://obip31jcs.bkt.clouddn.com/16-10-7/97608575.jpg"><img src="http://obip31jcs.bkt.clouddn.com/16-10-7/28205985.jpg">

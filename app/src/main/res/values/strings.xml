@@ -17,6 +17,8 @@
     <string name="btn_refresh_more">查看更多</string>
     <string name="header_bangumi_2">番剧推荐</string>
     <string name="tv_see_more">查看更多</string>
+    <string name="header_anim">动画区</string>
+    <string name="header_weblink">话题</string>
     <string-array name="MyCollect">
         <item>视频收藏</item>
         <item>主题收藏</item>

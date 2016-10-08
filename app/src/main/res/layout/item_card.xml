@@ -28,7 +28,7 @@
         <LinearLayout
             android:id="@+id/card_container"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/group_desc_text"
             android:orientation="horizontal">
             <ImageView

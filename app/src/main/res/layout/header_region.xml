@@ -4,6 +4,7 @@
                 android:layout_height="wrap_content">
 
     <com.example.castle.csite.view.DrawableCenterTextView
+        android:id="@+id/header_region_iv"
         android:layout_marginTop="7dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

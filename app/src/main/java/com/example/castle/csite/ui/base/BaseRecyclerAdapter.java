@@ -1,6 +1,7 @@
 package com.example.castle.csite.ui.base;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,10 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        LinearLayoutCompat.LayoutParams params =
+                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+        holder.itemView.setLayoutParams(params);
         switch (getItemViewType(position)) {
             case TYPE_NORMAL:
                 bindNormal(holder,position);

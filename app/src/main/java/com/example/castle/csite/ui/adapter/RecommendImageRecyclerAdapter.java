@@ -10,11 +10,13 @@ import android.widget.TextView;
 import com.example.castle.csite.R;
 import com.example.castle.csite.bean.RecommendContent;
 import com.example.castle.csite.util.ImageLoader;
+import com.example.castle.csite.util.StringUtil;
 import com.example.castle.csite.util.UiUtils;
 
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by castle on 16-10-1.
@@ -40,9 +42,29 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
     public void onBindViewHolder(ViewHolder holder, int position) {
         RecommendContent.ResultBean.BodyBean bean = mBeanList.get(position);
         ImageLoader.load(UiUtils.getContext(),bean.getCover(),holder.mGroupImageView);
+        showView(holder.mGroupDescText,holder.mTvAnswerWatch,holder.mTvAnswerDanmaku,holder.mTvPlayImageView);
+        //如果是weblinnk类型那么设置相关控件隐藏
+        if (!StringUtil.nonNull(bean.getTitle())) {
+            hideView(holder.mGroupDescText,holder.mTvAnswerWatch,holder.mTvAnswerDanmaku,holder.mTvPlayImageView);
+        }
         holder.mTvAnswerWatch.setText(bean.getPlay());
         holder.mTvAnswerDanmaku.setText(bean.getDanmaku());
         holder.mGroupDescText.setText(bean.getTitle());
+    }
+
+    public void hideView(View...views) {
+        for (View view : views) {
+            if (view.getVisibility()== View.VISIBLE) {
+                view.setVisibility(View.GONE);
+            }
+        }
+    }
+    public void showView(View...views) {
+        for (View view : views) {
+            if (view.getVisibility()== View.GONE||view.getVisibility()==View.INVISIBLE) {
+                view.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
 
@@ -65,10 +87,8 @@ public class RecommendImageRecyclerAdapter extends RecyclerView.Adapter<Recommen
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mGroupImageView = (ImageView) itemView.findViewById(R.id.group_image_view);
-            mGroupDescText = (TextView) itemView.findViewById(R.id.group_desc_text);
-            mTvAnswerDanmaku = (TextView) itemView.findViewById(R.id.tv_answer_danmaku);
-            mTvAnswerWatch = (TextView) itemView.findViewById(R.id.tv_answer_watch);
+            ButterKnife.bind(this,itemView);
+
             mTvAnswerDanmaku.setTextColor(UiUtils.getColor(R.color.gray));
             mTvAnswerWatch.setTextColor(UiUtils.getColor(R.color.gray));
         }
