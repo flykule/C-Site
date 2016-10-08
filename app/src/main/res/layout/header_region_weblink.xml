@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <com.example.castle.csite.view.DrawableCenterTextView
+        android:id="@+id/header_region_iv"
+        android:layout_marginTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/ic_header_topic"
+        android:text="@string/header_weblink"
+        android:textColor="@color/darkest"/>
+
+    <TextView
+        android:id="@+id/tv_see_more"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightest"
+        android:padding="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:text="@string/tv_see_more"
+        />
+
+</RelativeLayout>

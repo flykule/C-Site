@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+<!--
+    <com.example.castle.csite.view.DrawableCenterTextView
+        android:id="@+id/header_region_iv"
+        android:layout_marginTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:drawablePadding="3dp"
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/ic_category_t1"
+        android:text="@string/header_anim"
+        android:textColor="@color/darkest"/>
+-->
+    <RelativeLayout
+        android:id="@+id/foot_refresh_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp">
+
+        <ImageView
+            android:id="@+id/iv_region"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitXY"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:src="@mipmap/ic_category_t1"/>
+
+        <TextView
+            android:id="@+id/tv_region_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/iv_region"
+            android:text="@string/foot_hot"
+            android:textColor="@color/darkest"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_see_more"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightest"
+        android:padding="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        android:text="@string/tv_see_more"
+        />
+
+</RelativeLayout>
