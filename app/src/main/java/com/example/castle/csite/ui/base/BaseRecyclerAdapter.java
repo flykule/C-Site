@@ -65,13 +65,14 @@ public abstract class BaseRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        LinearLayoutCompat.LayoutParams params =
-                new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-        holder.itemView.setLayoutParams(params);
         switch (getItemViewType(position)) {
             case TYPE_NORMAL:
+                LinearLayoutCompat.LayoutParams params =
+                        new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT);
+                holder.itemView.setLayoutParams(params);
                 bindNormal(holder,position);
+                break;
         }
     }
 
