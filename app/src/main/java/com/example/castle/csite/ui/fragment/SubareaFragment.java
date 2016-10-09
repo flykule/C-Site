@@ -22,11 +22,12 @@ public class SubareaFragment extends Fragment {
 
     String names[] = {"直播", "番剧", "动画", "音乐", "舞蹈", "游戏", "科技", "生活",
             "鬼畜", "时尚", "广告", "娱乐", "电影", "电视剧", "游戏中心",};
-    private int[] icons = {R.drawable.ic_head_live, R.drawable.ic_head_live, R.drawable.ic_head_live,
-            R.drawable.ic_head_live, R.drawable.ic_head_live, R.drawable.ic_head_live,
-            R.drawable.ic_head_live, R.drawable.ic_head_live, R.drawable.ic_head_live,
-            R.drawable.ic_head_live, R.drawable.ic_head_live, R.drawable.ic_head_live,
-            R.drawable.ic_head_live, R.drawable.ic_head_live, R.drawable.ic_head_live,};
+    private int[] icons = {R.mipmap.ic_category_live,R.mipmap.ic_category_t13, R.mipmap.ic_category_t1,
+            R.mipmap.ic_category_t3,R.mipmap.ic_category_t129, R.mipmap.ic_category_t4,
+            R.mipmap.ic_category_t36,R.mipmap.ic_category_t160, R.mipmap.ic_category_t119,
+            R.mipmap.ic_category_t155,R.mipmap.ic_category_t165, R.mipmap.ic_category_t5,
+            R.mipmap.ic_category_t23,R.mipmap.ic_category_t11, R.mipmap.ic_category_game_center,
+         };
     private GridView mGv_show;
 
     @Nullable

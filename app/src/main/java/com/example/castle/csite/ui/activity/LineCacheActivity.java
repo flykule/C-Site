@@ -21,7 +21,6 @@ import com.example.castle.csite.listener.ICacheSortPopListener;
 import com.example.castle.csite.ui.base.BaseActivity;
 import com.example.castle.csite.ui.pop.CacheSortPop;
 import com.example.castle.csite.util.FileUtils;
-import com.example.castle.csite.util.LogUtils;
 import com.example.castle.csite.view.BindLayout;
 
 import java.io.File;
@@ -72,10 +71,6 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
         mShowSd_tv = (TextView) findViewById(showSd_tv);
 
         mProgressBar = (ProgressBar) findViewById(R.id.pb_store);
-      /*  long totalMeme = SystemInfoUtils.getTotalMeme(this);
-        long avalibMeme = SystemInfoUtils.getAvalibMeme(this);
-        mProgressBar.setMax(Integer.parseInt(String.valueOf(totalMeme)));
-        mProgressBar.setProgress(Integer.parseInt(String.valueOf(avalibMeme)));*/
 
 
         runOnUiThread(new Runnable() {
@@ -85,7 +80,7 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
                 long used = totalSize - getSDAvailableSize();
                 double v = (double) used / totalSize;
                 mProgressBar.setMax(100);
-                mProgressBar.setProgress((int)Math.floor(v * 100));
+                mProgressBar.setProgress((int) Math.floor(v * 100));
             }
         });
 
@@ -95,17 +90,14 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
         mRefresh_iv = (ImageView) findViewById(R.id.refresh_iv);
         mRefresh_iv.setOnClickListener(this);
 
-        mShowSd_tv.setText("主储存"+FileUtils.getSDTotalSize()+"/可用:"+FileUtils.getSDAvailableSize());
-        
-       /* 
-        long avalibMeme = SystemInfoUtils.getAvalibMeme(this);
-        long totalMeme = SystemInfoUtils.getTotalMeme(this);*/
-        //mProgressBar.setText("总/剩余内存:"+ Formatter.formatFileSize(this,totalMeme)+"/"+Formatter.formatFileSize(this,avalibMeme));
-        //LogUtils.i("总/剩余内存" + getSDTotalSize() + "/" + getSDAvailableSize());
+        mShowSd_tv.setText("主储存" + FileUtils.getSDTotalSize() + "/可用:" + FileUtils.getSDAvailableSize());
+
+
     }
 
     /**
-     *  获得SD卡总大小
+     * 获得SD卡总大小
+     *
      * @return
      */
     private long getSDTotalSize() {
@@ -117,7 +109,8 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
     }
 
     /**
-     *  获得sd卡剩余容量，即可用大小
+     * 获得sd卡剩余容量，即可用大小
+     *
      * @return
      */
     private long getSDAvailableSize() {
@@ -127,7 +120,7 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
         long availableBlocks = stat.getAvailableBlocks();
         return blockSize * availableBlocks;
     }
-    
+
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
@@ -179,21 +172,14 @@ public class LineCacheActivity extends BaseActivity implements View.OnClickListe
      */
     private void startAnimation() {
 
-      /*  mAnimation = AnimationUtils.loadAnimation(UiUtils.getContext(), R.anim.refresh_rotate);
-        mAnimation.setInterpolator(new LinearInterpolator());
-        mAnimation.setRepeatCount(2);
-        mAnimation.setRepeatMode(1);
-        mRefresh_iv.startAnimation(mAnimation);
-*/
-        RotateAnimation animation = new RotateAnimation(0f, 360f, 
-                Animation.RELATIVE_TO_SELF,0.5f, 
+        RotateAnimation animation = new RotateAnimation(0f, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
         animation.setDuration(500);
         animation.setRepeatCount(2);//设置重复次数 
         mRefresh_iv.setAnimation(animation);
         //开始动画
         mRefresh_iv.startAnimation(animation);
-
 
     }
 

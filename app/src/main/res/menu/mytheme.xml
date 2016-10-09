@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/drawer_menu_cache"
+          android:icon="@drawable/ic_toolbar_menu_download"
+          android:title="@string/toolbar_menu_download"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/drawer_menu_home"
+          android:icon="@drawable/ic_toolbar_menu_search"
+          android:title="@string/toolbar_menu_search"
+          app:showAsAction="always"/>
+</menu>
